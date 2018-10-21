@@ -8,11 +8,11 @@
 4. 电脑$$客户端设置  127.0.0.1:3322     密码:xxx  加密 aes-256-gcm
 5. 手机$$填PC电脑IP  192.168.1.188:3322 密码:xxx  加密 aes-256-gcm
 
-!()[https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/windows_kcp.gif]
+![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/windows_kcp.gif)
 ### 参数参考  udp2raw+kcptun 加速tcp流量 Step by Step 教程
 https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md
 
 ### 详细见
-[Windows_KCP加速使用说明.txt][https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/Windows_KCP加速使用说明.txt]
+[Windows_KCP加速使用说明.txt](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/Windows_KCP加速使用说明.txt)
 
-!()[https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/gui.png]
+![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/gui.png)
