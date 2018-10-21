@@ -6,3 +6,4 @@
 #define IDI_ICON1                               103
 #define OPEN_KCP                                40000
 #define CLOSE_KCP                               40001
+#define OPEN_KCP_UDP                            40003

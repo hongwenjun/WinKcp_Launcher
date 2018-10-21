@@ -14,13 +14,14 @@
 // Dialog resources
 //
 LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
-DLG_MAIN DIALOG 0, 0, 186, 95
+DLG_MAIN DIALOG 0, 0, 218, 105
 STYLE DS_3DLOOK | DS_CENTER | DS_MODALFRAME | DS_SHELLFONT | WS_CAPTION | WS_VISIBLE | WS_POPUP | WS_SYSMENU
-CAPTION "WinKcp_Launcher By sRGB.vicp.net"
+CAPTION "WinKcp启动器  By sRGB.vicp.net 蘭雅sRGB"
 FONT 8, "Ms Shell Dlg"
 {
-    PUSHBUTTON      "开启Windows_KCP加速服务", OPEN_KCP, 26, 15, 128, 30, 0, WS_EX_LEFT
-    PUSHBUTTON      "关闭Windows_KCP后台服务", CLOSE_KCP, 27, 52, 128, 30, 0, WS_EX_LEFT
+    PUSHBUTTON      "开启Windows Udp2Raw+KcpTun加速服务", OPEN_KCP, 15, 9, 190, 40, 0, WS_EX_LEFT
+    PUSHBUTTON      "只开启KcpTun加速服务", OPEN_KCP_UDP, 15, 58, 90, 40, 0, WS_EX_LEFT
+    PUSHBUTTON      "关闭WinKcp后台服务", CLOSE_KCP, 115, 58, 90, 40, 0, WS_EX_LEFT
 }
 
 

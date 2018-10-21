@@ -6,6 +6,7 @@
 
 int hide_run_cmd(char* cmdline);
 bool open_kcp_server(void);
+bool open_kcp_udp_server(void);
 bool close_kcp_server(void);
 
 HINSTANCE hInst;
@@ -27,6 +28,12 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
             case OPEN_KCP: {
                     open_kcp_server();
+                    EndDialog(hwndDlg, 0);
+                }
+                break;
+
+            case OPEN_KCP_UDP: {
+                    open_kcp_udp_server();
                     EndDialog(hwndDlg, 0);
                 }
                 break;
@@ -57,6 +64,14 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 bool open_kcp_server(void)
 {
     char cmdline[] = "cmd /c Windows_KCP.cmd";
+    hide_run_cmd(cmdline);
+
+    return true;
+}
+
+bool open_kcp_udp_server(void)
+{
+    char cmdline[] = "cmd /c Windows_KCP_UDP.cmd";
     hide_run_cmd(cmdline);
 
     return true;
