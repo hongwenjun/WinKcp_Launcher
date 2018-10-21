@@ -1,46 +1,51 @@
-    Windows udp2raw+kcptun ¼ÓËÙtcpÁ÷Á¿ ¼òÒ×¹¤¾ß  by ÌmÑÅsRGB
+    Windows udp2raw+kcptun åŠ é€Ÿtcpæµé‡ ç®€æ˜“å·¥å…·  by è˜­é›…sRGB
 
-Ê¹ÓÃËµÃ÷:
-1. ĞèÒªÏÈ°²×° WinPcap_4_1_3.exe
-2. ĞŞ¸Ä Windows_KCP.cmd ÀïµÄ·şÎñÆ÷IP²ÎÊı£¬ÈÃË«»÷Æô¶¯
-3. Ë«»÷ WinKcp_Launcher ¹ÜÀí Windows_KCP.cmd Æô¶¯¹Ø±Õ 
-4. µçÄÔSS¿Í»§¶ËÉèÖÃ  127.0.0.1:3322     ÃÜÂë:xxx  ¼ÓÃÜ aes-256-gcm
-5. ÊÖ»úSSÌîPCµçÄÔIP  192.168.1.188:3322 ÃÜÂë:xxx  ¼ÓÃÜ aes-256-gcm
+ä½¿ç”¨è¯´æ˜:
+1. éœ€è¦å…ˆå®‰è£… WinPcap_4_1_3.exe
+2. ä¿®æ”¹ Windows_KCP.cmd é‡Œçš„æœåŠ¡å™¨IPå‚æ•°ï¼Œè®©åŒå‡»å¯åŠ¨
+3. åŒå‡» WinKcp_Launcher ç®¡ç† Windows_KCP.cmd å¯åŠ¨å…³é—­ 
+4. ç”µè„‘SSå®¢æˆ·ç«¯è®¾ç½®  127.0.0.1:3322     å¯†ç :xxx  åŠ å¯† aes-256-gcm
+5. æ‰‹æœºSSå¡«PCç”µè„‘IP  192.168.1.188:3322 å¯†ç :xxx  åŠ å¯† aes-256-gcm
 
 
-========  Windows_KCP.cmd  ÃüÁîĞĞÌîÊµ¼ÊµÄ·şÎñÆ÷IP =====================================
+========  Windows_KCP.cmd å‘½ä»¤è¡Œå¡«å®é™…çš„æœåŠ¡å™¨IP =====================================
 @echo.
 @set PATH=%~dp0;%PATH%
 @start /b kcp-client -r "127.0.0.1:4000" -l ":3322" -mode fast2 -mtu 1300
 @start /b udp2raw -c -r188.188.188.188:8855 -l0.0.0.0:4000 -k"passwd" --raw-mode faketcp
 
+========  Windows_KCP_UDP.cmd  åªå¯åŠ¨ kcptun åŠ é€Ÿ =====================================
+@echo.
+@set PATH=%~dp0;%PATH%
+@start /b kcp-client -r "188.188.188.188:4000" -l ":3322" -mode fast2 -mtu 1300
+
 
 =======================================================================================
-udp2raw+kcptun ¼ÓËÙtcpÁ÷Á¿ Step by Step ½Ì³Ì
+udp2raw+kcptun åŠ é€Ÿtcpæµé‡ Step by Step æ•™ç¨‹
 https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md
 
 =======================================================================================  
-·şÎñ¶Ë°²×° ºÍ ¿Í»§¶ËÃüÁî²ÎÊı²Î¿¼
+æœåŠ¡ç«¯å®‰è£… å’Œ å®¢æˆ·ç«¯å‘½ä»¤å‚æ•°å‚è€ƒ
 https://github.com/hongwenjun/vps_setup/blob/master/udp2raw_kcptun_ss_for_debian9.sh
 
-# ¿Í»§¶ËÅäÖÃ²Î¿¼(Ç°Á½¸ö¿ÉÒÔÂ·ÓÉÔËĞĞ,µ«ÊÇ×îºóÒ»¸ö×îºÃ²»Òª,Â·ÓÉĞÔÄÜÓĞÏŞ,»áÈÃÄã¾õµÃÍøÂç¿¨Õ¨µÄ.)
-# ÔÚ±¾µØwindows ÔËĞĞudp2raw ºÍ kcp-client£¬¼ÙÉèserver ipÊÇ188.188.188.188£º
+# å®¢æˆ·ç«¯é…ç½®å‚è€ƒ(å‰ä¸¤ä¸ªå¯ä»¥è·¯ç”±è¿è¡Œ,ä½†æ˜¯æœ€åä¸€ä¸ªæœ€å¥½ä¸è¦,è·¯ç”±æ€§èƒ½æœ‰é™,ä¼šè®©ä½ è§‰å¾—ç½‘ç»œå¡ç‚¸çš„.)
+# åœ¨æœ¬åœ°windows è¿è¡Œudp2raw å’Œ kcp-clientï¼Œå‡è®¾server ipæ˜¯188.188.188.188ï¼š
 # ./udp2raw -c -r188.188.188.188:8855 -l0.0.0.0:4000 -k"passwd" --raw-mode faketcp
 # ./kcp-client -r "127.0.0.1:4000" -l ":3322" -mode fast2 -mtu 1300
-# SS ¿Í»§¶Ë => »ìÏı:aes-256-gcm, IP:127.0.0.1:3322, ÃÜÂë:¸Õ²ÅÉèÖÃµÄÃÜÂë.
-# ¼ÓËÙµÄ SSHµÇÂ½  # ssh -p 3322 root@127.0.0.1
+# SS å®¢æˆ·ç«¯ => æ··æ·†:aes-256-gcm, IP:127.0.0.1:3322, å¯†ç :åˆšæ‰è®¾ç½®çš„å¯†ç .
+# åŠ é€Ÿçš„ SSHç™»é™†  # ssh -p 3322 root@127.0.0.1
 
-# Ô¶³Ì·şÎñÆ÷²ÎÊı²Î¿¼ ss-server   udp2raw  kcp-server ²Î¿¼
+# è¿œç¨‹æœåŠ¡å™¨å‚æ•°å‚è€ƒ ss-server   udp2raw  kcp-server å‚è€ƒ
 # ss-server -s 127.0.0.1 -p 40000 -k xxx -m aes-256-gcm -t 300
 # udp2raw -s -l0.0.0.0:8855 -r 127.0.0.1:4000 -k "passwd" --raw-mode faketcp
 # kcp-server -t "127.0.0.1:40000" -l ":4000" -mode fast2 -mtu 1300
 
-# ¼ÓËÙSSHÊ¹ÓÃ²ÎÊı
+# åŠ é€ŸSSHä½¿ç”¨å‚æ•°
 # kcp-server -t "127.0.0.1:22"  -l ":4000"  -mode fast2 -mtu 1300
 
 =====================================================================================
-ÔÚwindowsÉÏÃæºóÌ¨ÔËĞĞ¿ÉÒÔÊ¹ÓÃstart ÃüÁî ²¢ÇÒÖ¸¶¨/b Ñ¡ÏîlinuxÏµÍ³ĞèÒªÔÚÃüÁîºóÃæ¼ÓÉÏ& ·ûºÅ¼´¿É
+åœ¨windowsä¸Šé¢åå°è¿è¡Œå¯ä»¥ä½¿ç”¨start å‘½ä»¤ å¹¶ä¸”æŒ‡å®š/b é€‰é¡¹linuxç³»ç»Ÿéœ€è¦åœ¨å‘½ä»¤åé¢åŠ ä¸Š& ç¬¦å·å³å¯
 
-ÔÚwindowsÉÏÃæÉ±½ø³ÌÓÃtaskkillÃüÁî
+åœ¨windowsä¸Šé¢æ€è¿›ç¨‹ç”¨taskkillå‘½ä»¤
 taskkill /im kcp-client.exe /t /f
 
