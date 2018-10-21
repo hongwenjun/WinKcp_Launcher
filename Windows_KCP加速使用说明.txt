@@ -1,0 +1,46 @@
+    Windows udp2raw+kcptun 加速tcp流量 简易工具  by 蘭雅sRGB
+
+使用说明:
+1. 需要先安装 WinPcap_4_1_3.exe
+2. 修改 Windows_KCP.cmd 里的服务器IP参数，让双击启动
+3. 双击 WinKcp_Launcher 管理 Windows_KCP.cmd 启动关闭 
+4. 电脑SS客户端设置  127.0.0.1:3322     密码:xxx  加密 aes-256-gcm
+5. 手机SS填PC电脑IP  192.168.1.188:3322 密码:xxx  加密 aes-256-gcm
+
+
+========  Windows_KCP.cmd  命令行填实际的服务器IP =====================================
+@echo.
+@set PATH=%~dp0;%PATH%
+@start /b kcp-client -r "127.0.0.1:4000" -l ":3322" -mode fast2 -mtu 1300
+@start /b udp2raw -c -r188.188.188.188:8855 -l0.0.0.0:4000 -k"passwd" --raw-mode faketcp
+
+
+=======================================================================================
+udp2raw+kcptun 加速tcp流量 Step by Step 教程
+https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md
+
+=======================================================================================  
+服务端安装 和 客户端命令参数参考
+https://github.com/hongwenjun/vps_setup/blob/master/udp2raw_kcptun_ss_for_debian9.sh
+
+# 客户端配置参考(前两个可以路由运行,但是最后一个最好不要,路由性能有限,会让你觉得网络卡炸的.)
+# 在本地windows 运行udp2raw 和 kcp-client，假设server ip是188.188.188.188：
+# ./udp2raw -c -r188.188.188.188:8855 -l0.0.0.0:4000 -k"passwd" --raw-mode faketcp
+# ./kcp-client -r "127.0.0.1:4000" -l ":3322" -mode fast2 -mtu 1300
+# SS 客户端 => 混淆:aes-256-gcm, IP:127.0.0.1:3322, 密码:刚才设置的密码.
+# 加速的 SSH登陆  # ssh -p 3322 root@127.0.0.1
+
+# 远程服务器参数参考 ss-server   udp2raw  kcp-server 参考
+# ss-server -s 127.0.0.1 -p 40000 -k xxx -m aes-256-gcm -t 300
+# udp2raw -s -l0.0.0.0:8855 -r 127.0.0.1:4000 -k "passwd" --raw-mode faketcp
+# kcp-server -t "127.0.0.1:40000" -l ":4000" -mode fast2 -mtu 1300
+
+# 加速SSH使用参数
+# kcp-server -t "127.0.0.1:22"  -l ":4000"  -mode fast2 -mtu 1300
+
+=====================================================================================
+在windows上面后台运行可以使用start 命令 并且指定/b 选项linux系统需要在命令后面加上& 符号即可
+
+在windows上面杀进程用taskkill命令
+taskkill /im kcp-client.exe /t /f
+
