@@ -16,3 +16,15 @@ https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md
 [Windows_KCP加速使用说明.txt](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/Windows_KCP加速使用说明.txt)
 
 ![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/gui.png)
+
+### 服务端简易安装
+```
+# 安装所需运行库
+apt update
+apt install -y  libev-dev libc-ares-dev
+
+# 安装脚本 sku
+mkdir -p sku && cd sku && wget -O sku.tgz https://git.io/fxy7s && tar -xvf sku.tgz && ./sku.sh
+```
+### 服务端简易配置
+-  vim sku_config.sh 然后 ** ./sku_congfi.sh ** 启用配置
