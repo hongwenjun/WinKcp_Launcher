@@ -21,10 +21,10 @@ https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md
 ```
 # 安装所需运行库
 apt update
-apt install -y  libev-dev libc-ares-dev
+apt install -y  libev-dev libc-ares-dev  libmbedtls-dev libsodium-dev
 
 # 安装脚本 sku
 mkdir -p sku && cd sku && wget -O sku.tgz https://git.io/fxy7s && tar -xvf sku.tgz && ./sku.sh
 ```
 ### 服务端简易配置
--  vim sku_config.sh 然后 ** ./sku_congfi.sh ** 启用配置
+-  vim sku_config.sh 然后 *./sku_congfi.sh* 启用配置
