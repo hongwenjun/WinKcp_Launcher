@@ -1,0 +1,71 @@
+{
+  "inbound": [
+    {
+      "localPort": 2080,
+      "protocol": "socks",
+      "udpEnabled": false
+    }
+  ],
+  "logEnabled": false,
+  "loglevel": "warning",
+  "index": 1,
+  "vmess": [
+    {
+      "configVersion": 2,
+      "address": "sky.srgb.xyz",
+      "port": 9099,
+      "id": "23c7aa3f-fedb-48e0-a137-1334b2ad7c26",
+      "alterId": 64,
+      "security": "aes-128-gcm",
+      "network": "tcp",
+      "remarks": "SKY",
+      "headerType": "none",
+      "requestHost": "",
+      "path": "",
+      "streamSecurity": "",
+      "allowInsecure": "",
+      "configType": 1,
+      "testResult": "",
+      "subid": ""
+    },
+    {
+      "configVersion": 2,
+      "address": "127.0.0.1",
+      "port": 3322,
+      "id": "23c7aa3f-fedb-48e0-a137-1334b2ad7c26",
+      "alterId": 64,
+      "security": "aes-128-gcm",
+      "network": "tcp",
+      "remarks": "SKY-加速",
+      "headerType": "none",
+      "requestHost": "",
+      "path": "",
+      "streamSecurity": "",
+      "allowInsecure": "",
+      "configType": 1,
+      "testResult": "",
+      "subid": ""
+    }
+  ],
+  "muxEnabled": false,
+  "chinasites": true,
+  "chinaip": true,
+  "useragent": [],
+  "userdirect": [],
+  "userblock": [],
+  "kcpItem": {
+    "mtu": 1350,
+    "tti": 50,
+    "uplinkCapacity": 12,
+    "downlinkCapacity": 100,
+    "congestion": false,
+    "readBufferSize": 2,
+    "writeBufferSize": 2
+  },
+  "sysAgentEnabled": false,
+  "listenerType": 0,
+  "urlGFWList": "",
+  "allowLANConn": false,
+  "remoteDNS": "",
+  "subItem": null
+}
