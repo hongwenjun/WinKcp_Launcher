@@ -12,6 +12,11 @@
 ### 参数参考  udp2raw+kcptun 加速tcp流量 Step by Step 教程
 https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md
 
+
+![](https://youtu.be/A4edsGXQdIc)
+
+https://youtu.be/A4edsGXQdIc?list=PLPidIcmhqWuRgSDLDdn-NFK1e3Y8pLg7M
+
 ### 详细见
 [Windows_KCP加速使用说明.txt](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/Windows_KCP加速使用说明.txt)
 
