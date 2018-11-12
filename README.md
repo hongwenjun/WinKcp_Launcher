@@ -13,9 +13,9 @@
 https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md
 
 
-![](https://youtu.be/A4edsGXQdIc)
+###Shadowsocks + Kcp+Udp2Raw加速 和 Udp2Raw服务TCP伪装 WireGuard Windows Kcp+Udp2Raw 启动器 
+使用视频链接   https://youtu.be/A4edsGXQdIc
 
-https://youtu.be/A4edsGXQdIc?list=PLPidIcmhqWuRgSDLDdn-NFK1e3Y8pLg7M
 
 ### 详细见
 [Windows_KCP加速使用说明.txt](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/Windows_KCP加速使用说明.txt)
