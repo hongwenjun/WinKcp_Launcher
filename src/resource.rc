@@ -11,17 +11,27 @@
 
 
 //
+// Bitmap resources
+//
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+IDB_BITMAP1        BITMAP         ".\\donate.bmp"
+
+
+
+//
 // Dialog resources
 //
 LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
-DLG_MAIN DIALOG 0, 0, 218, 105
+DLG_MAIN DIALOG 0, 0, 385, 172
 STYLE DS_3DLOOK | DS_CENTER | DS_MODALFRAME | DS_SHELLFONT | WS_CAPTION | WS_VISIBLE | WS_POPUP | WS_SYSMENU
-CAPTION "WinKcp启动器  By sRGB.vicp.net 蘭雅sRGB"
+CAPTION "Windows Kcp Udp2Raw 启动器         By sRGB.vicp.net 蘭雅sRGB"
 FONT 8, "Ms Shell Dlg"
 {
-    PUSHBUTTON      "开启Windows Udp2Raw+KcpTun加速服务", OPEN_KCP, 15, 9, 190, 40, 0, WS_EX_LEFT
-    PUSHBUTTON      "只开启KcpTun加速服务", OPEN_KCP_UDP, 15, 58, 90, 40, 0, WS_EX_LEFT
-    PUSHBUTTON      "关闭WinKcp后台服务", CLOSE_KCP, 115, 58, 90, 40, 0, WS_EX_LEFT
+    PUSHBUTTON      "开启Windows Udp2Raw+KcpTun加速服务", OPEN_KCP, 9, 61, 190, 48, 0, WS_EX_LEFT
+    PUSHBUTTON      "只开启KcpTun加速服务", OPEN_KCP_UDP, 10, 120, 90, 40, 0, WS_EX_LEFT
+    PUSHBUTTON      "关闭WinKcp后台服务", CLOSE_KCP, 110, 120, 90, 40, 0, WS_EX_LEFT
+    PUSHBUTTON      "打开Udp2Raw服务 TCP伪装 WireGuard VPN", OPEN_UDP2RAW, 9, 8, 190, 45, 0, WS_EX_LEFT
+    CONTROL         IDB_BITMAP1, DONATE_PIC, WC_STATIC, SS_BITMAP, 215, 7, 161, 158, WS_EX_CLIENTEDGE | WS_EX_TRANSPARENT
 }
 
 
