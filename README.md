@@ -34,3 +34,9 @@ mkdir -p sku && cd sku && wget -O sku.tgz https://git.io/fxy7s && tar -xvf sku.t
 ```
 ### 服务端简易配置
 -  vim sku_config.sh 然后 *./sku_congfi.sh* 启用配置
+
+### 一键安装wireguard 脚本 debian 9
+```
+# 一键安装wireguard 脚本 debian 9
+wget -qO- git.io/fptwc | bash
+```
