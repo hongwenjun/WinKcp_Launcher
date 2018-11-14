@@ -9,10 +9,10 @@
 
 ### 使用说明:
 1. 需要先安装 WinPcap_4_1_3.exe (已经包含和其他windows客户端)
-2. 修改 Windows_KCP.cmd 里的服务器IP参数，让双击启动
+2. 修改 Windows_KCP.cmd 里的服务器IP参数，双击启动调试
 3. 双击 WinKcp_Launcher 管理 Windows_KCP.cmd 启动关闭 
-4. 电脑$$客户端设置  127.0.0.1:3322     密码:xxx  加密 aes-256-gcm
-5. 手机$$填PC电脑IP  192.168.1.188:3322 密码:xxx  加密 aes-256-gcm
+4. 电脑$$客户端设置  127.0.0.1:3322     密码:xxx   加密 aes-256-gcm
+5. 手机$$填PC电脑IP  192.168.1.188:3322 密码:xxx   加密 aes-256-gcm
 
 ![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/windows_kcp.gif)
 
@@ -23,7 +23,7 @@ https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md
 ### 详细见
 [Windows_KCP加速使用说明.txt](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/Windows_KCP加速使用说明.txt)
 
-### 服务端简易安装
+### Shadowsocks+Kcp+Udp2Raw加速 服务端简易安装
 ```
 # 安装所需运行库
 apt update
@@ -31,12 +31,25 @@ apt install -y  libev-dev libc-ares-dev  libmbedtls-dev libsodium-dev
 
 # 安装脚本 sku
 mkdir -p sku && cd sku && wget -O sku.tgz https://git.io/fxy7s && tar -xvf sku.tgz && ./sku.sh
+
 ```
-### 服务端简易配置
--  vim sku_config.sh 然后 *./sku_congfi.sh* 启用配置
+### 服务端修改默认密码和端口号
+-  vim sku_config.sh 然后 *./sku_congfi.sh* 启用新配置
+###  本地电脑端 SS 导入配置 
+```
+ss://YWVzLTI1Ni1nY206c3JnYi54eXpAMTI3LjAuMC4xOjMzMjI=
+```
 
 ### 一键安装wireguard 脚本 debian 9
 ```
 # 一键安装wireguard 脚本 debian 9
 wget -qO- git.io/fptwc | bash
+```
+### 导出到客户端配置，修改实际的IP，不要修改默认9009端口
+```
+# 查询WireGuard状态
+wg
+
+# 显示配置文件，修改实际的IP，不要修改默认9009端口
+cat /etc/wireguard/client.conf
 ```
