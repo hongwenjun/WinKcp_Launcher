@@ -58,6 +58,11 @@ wg
 # 显示配置文件，修改实际的IP，不要修改默认9009端口
 cat /etc/wireguard/client.conf
 ```
+```
+#  vultr 服务商的主机默认网卡是 ens3，使用下面命令修改配置
+sed -i "s/eth0/ens3/g"  /etc/wireguard/wg0.conf
+reboot
+```
 ### Udp2Raw服务TCP伪装 WireGuard 服务端设置脚本
 ```
 https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/wg_udp2raw.sh
