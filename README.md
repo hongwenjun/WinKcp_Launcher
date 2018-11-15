@@ -1,6 +1,10 @@
 #  Windows udp2raw+kcptun 加速tcp流量 简易工具  by 蘭雅sRGB
 蘭雅sRGB 龙芯小本服务器 | [sRGB.vicp.net](http://sRGB.vicp.net)
 
+### ♦ 最新资讯 ♦Vultr 限时优惠，充值10美元送10美元，3.5美元/月，IP被墙免费换，支持微信、支付宝。
+- 点击这个链接注册，也算是对本项目作者的支持鼓励
+https://www.vultr.com/?ref=7591742
+
 ![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/gui.png)
 
 ## Shadowsocks + Kcp+Udp2Raw加速 和 Udp2Raw服务TCP伪装 WireGuard Windows Kcp+Udp2Raw 启动器 
