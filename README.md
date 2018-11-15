@@ -10,7 +10,9 @@ https://www.vultr.com/?ref=7591742
 
 ## Shadowsocks + Kcp+Udp2Raw加速 和 Udp2Raw服务TCP伪装 WireGuard Windows Kcp+Udp2Raw 启动器 
 
-使用视频链接   https://youtu.be/A4edsGXQdIc
+使用视频链接.1   https://youtu.be/A4edsGXQdIc
+
+使用视频链接.2   https://youtu.be/BvF6jQo_ZAo
 
 ### 使用说明:
 1. 需要先安装 WinPcap_4_1_3.exe (已经包含和其他windows客户端)
