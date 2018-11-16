@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 修改ss-server密码，SS默认不能直接访问，修改第26行  ss-server -s 0.0.0.0 -p 40000
+# 修改ss-server密码，SS默认不能直接访问，修改第26行  ss-server -s 0.0.0.0 (把原来127.0.0.1 改成4个0)
 PASSWORD=srgb.xyz
 
 # 下载UDP2RAW
