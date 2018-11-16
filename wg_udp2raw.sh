@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #下载UDP2RAW
-wget https://github.com/wangyu-/udp2raw-tunnel/releases/download/20180830.2/udp2raw_binaries.tar.gz
+wget https://github.com/wangyu-/udp2raw-tunnel/releases/download/20181113.0/udp2raw_binaries.tar.gz
 tar xf udp2raw_binaries.tar.gz
 mv udp2raw_amd64 /usr/bin/udp2raw
 rm udp2raw* -rf
@@ -19,7 +19,7 @@ cat <<EOF >/etc/rc.local
 #
 # rc.local
 
-udp2raw -s -l0.0.0.0:8855 -r 127.0.0.1:9009 -k "passwd" --raw-mode faketcp  >> /var/log/udp2raw.log &
+udp2raw -s -l0.0.0.0:8866 -r 127.0.0.1:9009 -k "passwd" --raw-mode faketcp  >> /var/log/wg_udp2raw_.log &
 
 exit 0
 EOF
