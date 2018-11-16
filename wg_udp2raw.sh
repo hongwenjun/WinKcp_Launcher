@@ -36,4 +36,6 @@ EOF
 chmod +x /etc/rc.local
 systemctl restart rc-local
 
+cat /etc/rc.local
+cat /etc/wireguard/client.conf
 
