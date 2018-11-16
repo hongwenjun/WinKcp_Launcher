@@ -7,6 +7,6 @@
 #define IDB_BITMAP1                             106
 #define OPEN_KCP                                40000
 #define CLOSE_KCP                               40001
-#define OPEN_KCP_UDP                            40003
+#define OPEN_START_APP                          40003
 #define OPEN_UDP2RAW                            40004
 #define DONATE_PIC                              40005

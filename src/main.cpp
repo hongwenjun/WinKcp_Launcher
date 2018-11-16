@@ -6,7 +6,7 @@
 
 int hide_run_cmd(char* cmdline);
 bool open_kcp_server(void);
-bool open_kcp_udp_server(void);
+bool open_start_app(void);
 bool close_kcp_server(void);
 bool open_wireguard_udp2raw(void);
 
@@ -37,14 +37,14 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
     case WM_COMMAND: {
             switch (LOWORD(wParam)) {
 
-            case OPEN_KCP: {
-                    open_kcp_server();
+            case OPEN_START_APP: {
+                    open_start_app();
                     EndDialog(hwndDlg, 0);
                 }
                 break;
 
-            case OPEN_KCP_UDP: {
-                    open_kcp_udp_server();
+            case OPEN_KCP: {
+                    open_kcp_server();
                     EndDialog(hwndDlg, 0);
                 }
                 break;
@@ -57,7 +57,7 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
             case CLOSE_KCP: {
                     close_kcp_server();
-                    EndDialog(hwndDlg, 0);
+                //  EndDialog(hwndDlg, 0);
                 }
                 break;
 
@@ -73,7 +73,7 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
 {
     hInst = hInstance;
- //   InitCommonControls();
+//   InitCommonControls();
 
     // 从资源中加载BMP文件和图标，这些工作也可以在WM_INITDIALOG消息中进行
     g_hBitmap_DONATE = ::LoadBitmap(hInst, (LPCTSTR)IDB_BITMAP1);
@@ -83,17 +83,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 }
 
 
-bool open_kcp_server(void)
+bool open_start_app(void)
 {
-    char cmdline[] = "cmd /c Windows_KCP.cmd";
+    char cmdline[] = "cmd /c START_APP.cmd";
     hide_run_cmd(cmdline);
 
     return true;
 }
 
-bool open_kcp_udp_server(void)
+
+
+bool open_kcp_server(void)
 {
-    char cmdline[] = "cmd /c Windows_KCP_UDP.cmd";
+    char cmdline[] = "cmd /c Windows_KCP.cmd";
     hide_run_cmd(cmdline);
 
     return true;
@@ -152,11 +154,15 @@ int hide_run_cmd(char* cmdline)
 void App_Initdialog(HWND & hwnd)
 {
 
-    // 设置标题栏图标
-    ::SendMessage(hwnd, WM_SETICON, IDI_ICON1, (long)g_hIcon);
+    // 大图标：按下alt+tab键切换窗口时对应的图标
+    // 小图标：就是窗口左上角对应的那个图标
+    ::SendMessage(hwnd, WM_SETICON, ICON_BIG, (LPARAM)g_hIcon);
+    ::SendMessage(hwnd, WM_SETICON, ICON_SMALL, (LPARAM)g_hIcon);
 
     // 设置图片
     ::SendDlgItemMessage(hwnd, DONATE_PIC, STM_SETIMAGE, IMAGE_BITMAP, (long)g_hBitmap_DONATE);
+
+
 
 
 }
