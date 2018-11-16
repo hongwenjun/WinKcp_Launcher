@@ -3,17 +3,15 @@
 # 修改ss-server密码，SS默认不能直接访问，修改第26行  ss-server -s 0.0.0.0 (把原来127.0.0.1 改成4个0)
 PASSWORD=srgb.xyz
 
+# 停止原先服务
+systemctl stop rc-local
+
 # 下载UDP2RAW
 wget https://github.com/wangyu-/udp2raw-tunnel/releases/download/20181113.0/udp2raw_binaries.tar.gz
 tar xf udp2raw_binaries.tar.gz
 mv udp2raw_amd64 /usr/bin/udp2raw
 rm udp2raw* -rf
 rm version.txt
-
-
-# 停止原先服务
-systemctl stop rc-local
-
 
 #安装到启动项 适合debian 9 x64
 
