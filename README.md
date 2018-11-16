@@ -30,18 +30,12 @@ https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md
 ### 详细见
 [Windows_KCP加速使用说明.txt](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/Windows_KCP加速使用说明.txt)
 
-### Shadowsocks+Kcp+Udp2Raw加速 服务端简易安装
+### Shadowsocks+Kcp+Udp2Raw加速 服务端  debian 9
 ```
-# 安装所需运行库
-apt update
-apt install -y  libev-dev libc-ares-dev  libmbedtls-dev libsodium-dev
-
-# 安装脚本 sku
-mkdir -p sku && cd sku && wget -O sku.tgz https://git.io/fxy7s && tar -xvf sku.tgz && ./sku.sh
-
+# 一键安装 Shadowsocks+Kcp+Udp2Raw加速脚本 for debian 9
+wget -qO- git.io/fx6UQ | bash
 ```
-### 服务端修改默认密码和端口号
--  vim sku_config.sh 然后 *./sku_congfi.sh* 启用新配置
+
 ###  本地电脑端 SS 导入配置 
 ```
 ss://YWVzLTI1Ni1nY206c3JnYi54eXpAMTI3LjAuMC4xOjMzMjI=
