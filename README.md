@@ -53,6 +53,13 @@ ss://YWVzLTI1Ni1nY206c3JnYi54eXpAMTI3LjAuMC4xOjMzMjI=
 # 一键安装wireguard 脚本 debian 9
 wget -qO- git.io/fptwc | bash
 ```
+
+###  一键 WireGuard 多用户配置共享脚本
+```
+# 一键 WireGuard 多用户配置共享脚本 
+wget -qO- https://git.io/fpnQt | bash
+```
+
 ### 导出到客户端配置，修改实际的IP，不要修改默认9009端口
 ```
 # 查询WireGuard状态
