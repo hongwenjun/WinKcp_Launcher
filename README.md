@@ -10,6 +10,8 @@ https://www.vultr.com/?ref=7591742
 
 ## Shadowsocks + Kcp+Udp2Raw加速 和 Udp2Raw服务TCP伪装 WireGuard Windows Kcp+Udp2Raw 启动器 
 
+[![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/Wireguard/tel_pc.jpg)](https://youtu.be/O__RsZewA60)
+
 使用视频链接.1   https://youtu.be/A4edsGXQdIc
 
 使用视频链接.2   https://youtu.be/BvF6jQo_ZAo
@@ -43,7 +45,7 @@ wget -qO- git.io/fx6UQ | bash
 ```
 ss://YWVzLTI1Ni1nY206c3JnYi54eXpAMTI3LjAuMC4xOjMzMjI=
 ```
-
+[![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/Wireguard/ss_wg.jpg)](https://youtu.be/-cfuQSaJb5w)
 ### 一键安装wireguard 脚本 debian 9
 ```
 # 一键安装wireguard 脚本 debian 9
