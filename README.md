@@ -22,8 +22,8 @@ https://www.vultr.com/?ref=7591742
 1. 需要先安装 WinPcap_4_1_3.exe (已经包含和其他windows客户端)
 2. 修改 Windows_KCP.cmd 里的服务器IP参数，双击启动调试
 3. 双击 WinKcp_Launcher 管理 Windows_KCP.cmd 启动关闭 
-4. 电脑$$客户端设置  127.0.0.1:3322     密码:xxx   加密 aes-256-gcm
-5. 手机$$填PC电脑IP  192.168.1.188:3322 密码:xxx   加密 aes-256-gcm
+4. 电脑$$客户端设置  127.0.0.1:3322     密码:******  加密 aes-256-gcm
+5. 手机$$填PC电脑IP  192.168.1.188:3322 密码:******   加密 aes-256-gcm
 
 ![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/windows_kcp.gif)
 
