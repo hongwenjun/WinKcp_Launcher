@@ -34,9 +34,9 @@ https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md
 ### 详细见
 [Windows_KCP加速使用说明.txt](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/Windows_KCP加速使用说明.txt)
 
-### Shadowsocks+Kcp+Udp2Raw加速 服务端  debian 9
+### Shadowsocks+Kcp+Udp2Raw加速 服务端  debian 9  Ubuntu
 ```
-# 一键安装 SS+Kcp+Udp2Raw 脚本 快速安装 for debian 9
+# 一键安装 SS+Kcp+Udp2Raw 脚本 快速安装 for debian 9  Ubuntu
 wget -qO- git.io/fpZIW | bash
 
 # 一键安装 SS+Kcp+Udp2Raw 脚本 第二种编译方式安装，速度慢一些
@@ -47,19 +47,22 @@ wget -qO- git.io/fx6UQ | bash
 ```
 ss://YWVzLTI1Ni1nY206c3JnYi54eXpAMTI3LjAuMC4xOjMzMjI=
 ```
-[![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/Wireguard/ss_wg.jpg)](https://youtu.be/-cfuQSaJb5w)
-### 一键安装wireguard 脚本 debian 9
-```
-# 一键安装wireguard 脚本 debian 9
-wget -qO- git.io/fptwc | bash
-```
 
-###  一键 WireGuard 多用户配置共享脚本
+### 一键安装wireguard 脚本 For Debian_9  Ubuntu  Centos_7
 ```
-# 一键 WireGuard 多用户配置共享脚本 
-wget -qO- https://git.io/fpnQt | bash
+# 一键安装wireguard 脚本 Debian 9 (源:逗比网安装笔记)
+wget -qO- git.io/fptwc | bash
+
+# 一键安装wireguard 脚本 Ubuntu   (源:逗比网安装笔记)
+wget -qO- git.io/fpcnL | bash
+
+# CentOS7一键脚本安装WireGuard   (https://atrandys.com/2018/886.html)
+yum install -y wget && \
+wget https://raw.githubusercontent.com/yobabyshark/wireguard/master/wireguard_install.sh \
+&& chmod +x wireguard_install.sh && ./wireguard_install.sh
+
 ```
-[![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/Wireguard/wg5clients.jpg)](https://youtu.be/TOaihmhrYQY)
+[![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/Wireguard/ss_wg.jpg)](https://youtu.be/-cfuQSaJb5w)
 
 ### 导出到客户端配置，修改实际的IP，不要修改默认9009端口
 ```
