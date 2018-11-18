@@ -38,7 +38,7 @@ udp2raw -s -l0.0.0.0:8855 -r 127.0.0.1:4000 -k "passwd" --raw-mode faketcp  >> /
 udp2raw -s -l0.0.0.0:8866 -r 127.0.0.1:9009 -k "passwd" --raw-mode faketcp  >> /var/log/wg_udp2raw.log &
 
 # WireGuard + UDPspeeder 加速UDP TCP  端口  8888
-speederv2 -s -l0.0.0.0:8888 -r127.0.0.1:9009  -f20:10 -k "passwd" --mode 0
+speederv2 -s -l0.0.0.0:8888 -r127.0.0.1:9009  -f20:10 -k "passwd" --mode 0  >> /var/log/speederv2.log &
 
 exit 0
 EOF
