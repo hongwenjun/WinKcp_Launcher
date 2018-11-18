@@ -36,10 +36,10 @@ https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md
 
 ### Shadowsocks+Kcp+Udp2Raw加速 服务端  debian 9  Ubuntu
 ```
-# 一键安装 SS+Kcp+Udp2Raw 脚本 快速安装 for debian 9  Ubuntu
+# 一键安装 SS+Kcp+Udp2Raw 脚本 快速安装 for debian 9
 wget -qO- git.io/fpZIW | bash
 
-# 一键安装 SS+Kcp+Udp2Raw 脚本 第二种编译方式安装，速度慢一些
+# 一键安装 SS+Kcp+Udp2Raw 脚本 for debian 9  Ubuntu (编译安装)
 wget -qO- git.io/fx6UQ | bash
 ```
 
