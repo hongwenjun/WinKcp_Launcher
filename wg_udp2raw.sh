@@ -17,7 +17,7 @@ rm version.txt
 wget https://github.com/wangyu-/UDPspeeder/releases/download/20180806.0/speederv2_linux.tar.gz
 tar xf speederv2_linux.tar.gz
 mv speederv2_amd64 /usr/bin/speederv2
-rm speederv2w* -rf
+rm speederv2* -rf
 rm version.txt
 
 
