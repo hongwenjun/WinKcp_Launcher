@@ -64,6 +64,14 @@ wget https://raw.githubusercontent.com/yobabyshark/wireguard/master/wireguard_in
 ```
 [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/Wireguard/ss_wg.jpg)](https://youtu.be/-cfuQSaJb5w)
 
+###  一键 WireGuard 多用户配置共享脚本
+```
+# 一键 WireGuard 多用户配置共享脚本 
+wget -qO- https://git.io/fpnQt | bash
+```
+[![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/Wireguard/wg5clients.jpg)](https://youtu.be/TOaihmhrYQY)
+
+
 ### 导出到客户端配置，修改实际的IP，不要修改默认9009端口
 ```
 # 查询WireGuard状态
