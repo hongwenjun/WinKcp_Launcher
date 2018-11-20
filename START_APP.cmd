@@ -20,7 +20,7 @@
 ::  start /b  brook client -l 127.0.0.1:2080 -i 127.0.0.1 -s %IP_URL%:%PORT% -p %PASSWORD%
 
 
-@set SERVER_IP=144.202.95.95
+@set SERVER_IP=188.188.188.188
 
 @route add %SERVER_IP% mask 255.255.255.0 default METRIC default IF default
 

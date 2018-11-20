@@ -1,7 +1,7 @@
 @echo.
 @set PATH=%~dp0;%PATH%
 
-@set SERVER_IP=144.202.95.95
+@set SERVER_IP=188.188.188.188
 
 @route add %SERVER_IP% mask 255.255.255.0 default METRIC default IF default
 
