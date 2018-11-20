@@ -13,7 +13,6 @@ https://www.vultr.com/?ref=7591742
 
 ## Shadowsocks + Kcp+Udp2Raw加速 和 Udp2Raw服务TCP伪装 WireGuard Windows Kcp+Udp2Raw 启动器 
 
-
 使用视频链接.1   https://youtu.be/A4edsGXQdIc
 
 使用视频链接.2   https://youtu.be/BvF6jQo_ZAo
@@ -25,11 +24,8 @@ https://www.vultr.com/?ref=7591742
 4. 电脑$$客户端设置  127.0.0.1:3322     密码:******  加密 aes-256-gcm
 5. 手机$$填PC电脑IP  192.168.1.188:3322 密码:******   加密 aes-256-gcm
 
-![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/windows_kcp.gif)
-
 ### 参数参考  udp2raw+kcptun 加速tcp流量 Step by Step 教程
 https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md
-
 
 ### 详细见
 [Windows_KCP加速使用说明.txt](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/Windows_KCP加速使用说明.txt)
@@ -43,7 +39,7 @@ wget -qO- git.io/fpZIW | bash
 wget -qO- git.io/fx6UQ | bash
 ```
 
-###  本地电脑端 SS 导入配置 
+###  本地电脑端 SS 导入配置，有默认的 SS密码
 ```
 ss://YWVzLTI1Ni1nY206c3JnYi54eXpAMTI3LjAuMC4xOjMzMjI=
 ```
@@ -53,7 +49,7 @@ ss://YWVzLTI1Ni1nY206c3JnYi54eXpAMTI3LjAuMC4xOjMzMjI=
 # 一键安装wireguard 脚本 Debian 9 (源:逗比网安装笔记)
 wget -qO- git.io/fptwc | bash
 
-# 一键安装wireguard 脚本 Ubuntu   (源:逗比网安装笔记)
+# 一键安装wireguard 脚本 Ubuntu 18(源:逗比网安装笔记)
 wget -qO- git.io/fpcnL | bash
 
 # CentOS7一键脚本安装WireGuard   (https://atrandys.com/2018/886.html)
@@ -71,6 +67,7 @@ wget -qO- https://git.io/fpnQt | bash
 ```
 [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/Wireguard/wg5clients.jpg)](https://youtu.be/TOaihmhrYQY)
 
+![](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/Wireguard/bash_wg5.gif)
 
 ### 导出到客户端配置，修改实际的IP，不要修改默认9009端口
 ```
@@ -85,6 +82,7 @@ cat /etc/wireguard/client.conf
 sed -i "s/eth0/ens3/g"  /etc/wireguard/wg0.conf
 reboot
 ```
+
 ### Udp2Raw服务TCP伪装 WireGuard 服务端设置脚本
 ```
 wget https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/wg_udp2raw.sh 
