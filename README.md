@@ -19,16 +19,20 @@ https://www.vultr.com/?ref=7591742
 
 ### 使用说明:
 1. 需要先安装 WinPcap_4_1_3.exe (已经包含和其他windows客户端)
-2. 修改 Windows_KCP.cmd 里的服务器IP参数，双击启动调试
-3. 双击 WinKcp_Launcher 管理 Windows_KCP.cmd 启动关闭 
-4. 电脑$$客户端设置  127.0.0.1:3322     密码:******  加密 aes-256-gcm
-5. 手机$$填PC电脑IP  192.168.1.188:3322 密码:******   加密 aes-256-gcm
+2. 修改 Windows_KCP.cmd 和 Windows_UDP2RAW.cmd 服务器IP参数，双击启动调试
+3. 双击 WinKcp_Launcher 分别管理  Windows_KCP.cmd 和 Windows_UDP2RAW.cm 启动关闭 
+4. 电脑$$客户端设置  导入  *ss://YWVzLTI1Ni1nY206c3JnYi54eXpAMTI3LjAuMC4xOjMzMjI=*
+5. 电脑WG客户端设置  导入 wg_client.conf 修改 Endpoint = 127.0.0.1:9009 另存一个配置 
+6. 手机不能装kcp和udp2raw，需要使用PC或者路由器转接
+
+###  本地电脑端 SS 导入配置，有默认的 SS密码
+```
+ss://YWVzLTI1Ni1nY206c3JnYi54eXpAMTI3LjAuMC4xOjMzMjI=
+```
 
 ### 参数参考  udp2raw+kcptun 加速tcp流量 Step by Step 教程
 https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md
 
-### 详细见
-[Windows_KCP加速使用说明.txt](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/Windows_KCP加速使用说明.txt)
 
 ### Shadowsocks+Kcp+Udp2Raw加速 服务端  debian 9  Ubuntu
 ```
@@ -37,11 +41,6 @@ wget -qO- git.io/fpZIW | bash
 
 # 一键安装 SS+Kcp+Udp2Raw 脚本 for debian 9  Ubuntu (编译安装)
 wget -qO- git.io/fx6UQ | bash
-```
-
-###  本地电脑端 SS 导入配置，有默认的 SS密码
-```
-ss://YWVzLTI1Ni1nY206c3JnYi54eXpAMTI3LjAuMC4xOjMzMjI=
 ```
 
 ### 一键安装wireguard 脚本 For Debian_9  Ubuntu  Centos_7
