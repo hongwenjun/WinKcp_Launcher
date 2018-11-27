@@ -1,11 +1,6 @@
 #  Windows udp2raw+kcptun 加速tcp流量 简易工具  by 蘭雅sRGB
 蘭雅sRGB 龙芯小本服务器 | [sRGB.vicp.net](http://sRGB.vicp.net)
 
-### ♦ 最新资讯 ♦Vultr 限时优惠，充值10美元送10美元，3.5美元/月，IP被墙免费换，支持微信、支付宝。
-- 点击这个链接注册，也算是对本项目作者的支持鼓励
-
-https://www.vultr.com/?ref=7591742
-
 ![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/gui.png)
 
 ## Wireguard 手机和PC客户端设置技巧
@@ -16,6 +11,7 @@ https://www.vultr.com/?ref=7591742
 使用视频链接.1   https://youtu.be/A4edsGXQdIc
 
 使用视频链接.2   https://youtu.be/BvF6jQo_ZAo
+
 ![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/WinKcp_Launcher.webp)
 
 ### 使用说明:
@@ -54,7 +50,7 @@ wget -qO- git.io/fpcnL | bash
 
 # CentOS7一键脚本安装WireGuard   (https://atrandys.com/2018/886.html)
 yum install -y wget && \
-wget https://raw.githubusercontent.com/yobabyshark/wireguard/master/wireguard_install.sh \
+wget https://raw.githubusercontent.com/atrandys/wireguard/master/wireguard_install.sh \
 && chmod +x wireguard_install.sh && ./wireguard_install.sh
 
 ```
@@ -84,7 +80,7 @@ cat /etc/wireguard/client.conf
 sed -i "s/eth0/ens3/g"  /etc/wireguard/wg0.conf
 reboot
 
-#  GCP 香港 Ubuntu系统 默认网卡是 ens4，使用下面命令修改配置
+#  GCP 香港 Ubuntu系统 默认网卡是 ens4，使用下面命令修改配置(脚本已经自动修改)
 #  GCP 香港 Ubuntu系统 没带python，不能开启临时web下载，可以 apt install -y python 安装
 sed -i "s/eth0/ens4/g"  /etc/wireguard/wg0.conf
 reboot
