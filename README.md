@@ -88,7 +88,5 @@ reboot
 
 ### Udp2Raw服务TCP伪装 WireGuard 服务端设置脚本
 ```
-wget https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/wg_udp2raw.sh 
-chmod +x wg_udp2raw.sh  && ./wg_udp2raw.sh
-
+wget -qO- https://git.io/fpKnF | bash
 ```
