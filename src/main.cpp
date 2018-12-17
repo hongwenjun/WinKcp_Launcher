@@ -2,7 +2,7 @@
 #include <commctrl.h>
 #include <stdio.h>
 #include "resource.h"
-
+#include "ipbox_edit.h"
 
 int hide_run_cmd(char* cmdline);
 bool open_kcp_server(void);
@@ -10,13 +10,15 @@ bool open_start_app(void);
 bool close_kcp_server(void);
 bool open_wireguard_udp2raw(void);
 
+
 void App_Initdialog(HWND & hwnd);
 
 HBITMAP g_hBitmap_DONATE; // 打赏图片的句柄
 HICON   g_hIcon;    // 对话框图标句柄
 
-HINSTANCE hInst;
 
+
+HINSTANCE hInst;
 
 BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
@@ -25,6 +27,7 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
     case WM_INITDIALOG: {
             App_Initdialog(hwndDlg); // 设置标题栏图标,// 设置图片
+
 
         }
         break;
@@ -44,12 +47,14 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
                 break;
 
             case OPEN_KCP: {
+                    close_kcp_server();
                     open_kcp_server();
                     EndDialog(hwndDlg, 0);
                 }
                 break;
 
             case OPEN_UDP2RAW: {
+                    close_kcp_server();
                     open_wireguard_udp2raw();
                     EndDialog(hwndDlg, 0);
                 }
@@ -57,9 +62,37 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
             case CLOSE_KCP: {
                     close_kcp_server();
-                //  EndDialog(hwndDlg, 0);
+                    EndDialog(hwndDlg, 0);
                 }
                 break;
+
+            case IP_SESELECT: {
+                    // ip管理窗口开启
+                    ipbox_load(hwndDlg);
+                    open_ipbox(hwndDlg);
+                }
+                break;
+
+            case IP_ADD:
+                {
+                    ipbox_add(hwndDlg);
+
+                }
+                break;
+
+            case IP_DEL:
+                {
+                    ipbox_del(hwndDlg);
+                }
+                break;
+
+            case IP_SAVE:
+                {
+                    ipbox_save(hwndDlg);
+                }
+                break;
+
+
 
                 return TRUE;
             }
@@ -112,7 +145,8 @@ bool open_wireguard_udp2raw(void)
 
 bool close_kcp_server(void)
 {
-    char cmdline[] = "taskkill.exe /im kcp-client.exe  /f /im udp2raw.exe";
+    char cmdline[] = "taskkill.exe /im kcp-client.exe  /f /im udp2raw.exe  /im speederv2.exe "
+                     "/im YunDetectService.exe  /im AlibabaprotectUI.exe   /im acrotray.exe";
     hide_run_cmd(cmdline);
 
     return true;
@@ -163,6 +197,9 @@ void App_Initdialog(HWND & hwnd)
     ::SendDlgItemMessage(hwnd, DONATE_PIC, STM_SETIMAGE, IMAGE_BITMAP, (long)g_hBitmap_DONATE);
 
 
-
-
+    // ipbox : ip管理窗口隐藏
+    for (size_t i = 0 ; i != sizeof ipbox / sizeof * ipbox ; i++) {
+        HWND hwnd_ipbox = ::GetDlgItem(hwnd, ipbox[i]);
+        ::ShowWindow(hwnd_ipbox, SW_HIDE);
+    }
 }

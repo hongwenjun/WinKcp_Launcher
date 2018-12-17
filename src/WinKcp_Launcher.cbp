@@ -41,6 +41,8 @@
 			<Add library="comctl32" />
 			<Add directory="$(#psdk.lib)" />
 		</Linker>
+		<Unit filename="ipbox_edit.cpp" />
+		<Unit filename="ipbox_edit.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="manifest.xml" />
 		<Unit filename="resource.h" />
