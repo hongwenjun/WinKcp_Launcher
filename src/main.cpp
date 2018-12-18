@@ -13,6 +13,7 @@ bool open_wireguard_udp2raw(void);
 
 void App_Initdialog(HWND & hwnd);
 
+
 HBITMAP g_hBitmap_DONATE; // 打赏图片的句柄
 HICON   g_hIcon;    // 对话框图标句柄
 
@@ -38,6 +39,10 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
         return TRUE;
 
     case WM_COMMAND: {
+
+            int  wmId    = LOWORD(wParam);
+            int  wmEvent = HIWORD(wParam);
+
             switch (LOWORD(wParam)) {
 
             case OPEN_START_APP: {
@@ -73,25 +78,26 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
                 }
                 break;
 
-            case IP_ADD:
-                {
+            case IP_ADD: {
                     ipbox_add(hwndDlg);
 
                 }
                 break;
 
-            case IP_DEL:
-                {
+            case IP_DEL: {
                     ipbox_del(hwndDlg);
                 }
                 break;
 
-            case IP_SAVE:
-                {
+            case IP_SAVE: {
                     ipbox_save(hwndDlg);
                 }
                 break;
 
+            case IP_LIST: {
+                    ipbox_list_signal(hwndDlg, wmEvent);
+                }
+                break;
 
 
                 return TRUE;
@@ -128,6 +134,11 @@ bool open_start_app(void)
 
 bool open_kcp_server(void)
 {
+    char newip[128] = {0};
+    getnewip(newip);
+    if (strcmp(newip, "NULL") != 0)
+        set_server_ip("Windows_KCP.cmd", newip);
+
     char cmdline[] = "cmd /c Windows_KCP.cmd";
     hide_run_cmd(cmdline);
 
@@ -136,6 +147,12 @@ bool open_kcp_server(void)
 
 bool open_wireguard_udp2raw(void)
 {
+    char newip[128] = {0};
+    getnewip(newip);
+    if (strcmp(newip, "NULL") != 0)
+        set_server_ip("Windows_UDP2RAW.cmd", newip);
+//    MessageBox(0, newip, newip, MB_OK);
+
     char cmdline[] = "cmd /c Windows_UDP2RAW.cmd";
     hide_run_cmd(cmdline);
 

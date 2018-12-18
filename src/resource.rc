@@ -28,7 +28,7 @@ CAPTION "Windows Kcp Udp2Raw 启动器         By sRGB.vicp.net 蘭雅sRGB"
 FONT 8, "Ms Shell Dlg"
 {
     CONTROL         IDB_BITMAP1, DONATE_PIC, WC_STATIC, SS_BITMAP, 215, 7, 161, 158, WS_EX_CLIENTEDGE | WS_EX_TRANSPARENT
-    PUSHBUTTON      ">>", IP_SESELECT, 205, 61, 15, 48, 0, WS_EX_LEFT
+    PUSHBUTTON      ">>", IP_SESELECT, 205, 61, 12, 48, 0, WS_EX_LEFT
     PUSHBUTTON      "打开Udp2Raw服务 TCP伪装 WireGuard VPN", OPEN_UDP2RAW, 9, 8, 190, 45, 0, WS_EX_LEFT
     PUSHBUTTON      "开启Windows Udp2Raw+KcpTun加速服务", OPEN_KCP, 9, 61, 190, 48, 0, WS_EX_LEFT
     PUSHBUTTON      "运行: 自定义程序", OPEN_START_APP, 10, 120, 90, 40, 0, WS_EX_LEFT

@@ -1,6 +1,12 @@
-#include "ipbox_edit.h"
+﻿#include "ipbox_edit.h"
 
 const char* ipbox_file = "ipbox.dat";
+static char getip[256] = "NULL";
+
+void getnewip(char* newip)
+{
+    strcpy(newip, getip);
+}
 
 // ip管理窗口开启  ipbox[] 数组
 void open_ipbox(HWND &hwndDlg)
@@ -37,7 +43,11 @@ void ipbox_add(HWND &hwndDlg)
     if (len_ip > 0) {
         // 向列表框添加文本
         if (len_info > 0) {
-            strcat(ipbuf, "  ###  ");
+            if (len_ip < 16) {
+                strcat(ipbuf, "                ");
+                ipbuf[16] = '\0';
+            }
+            strcat(ipbuf, " # ");
             strcat(ipbuf, info_buf);
 
             // 清空文本框文本
@@ -88,10 +98,119 @@ void ipbox_load(HWND &hwndDlg)
     if (pFile != NULL) {
         while (fgets(buf, 512, pFile) != NULL) {
             pch = strrchr(buf, '\n');
-            *pch = '\0';
+            if (pch != NULL)
+                *pch = '\0';
+
             if (strlen(buf) > 0)
                 ::SendDlgItemMessage(hwndDlg, IP_LIST, LB_ADDSTRING, NULL, (long)buf);
         }
         fclose(pFile);
     }
+}
+
+void ipbox_list_signal(HWND &hwndDlg, int wmEvent)
+{
+
+    HWND hwnd_edit_ip = ::GetDlgItem(hwndDlg, IP_TEXT);
+    HWND hwnd_edit_info = ::GetDlgItem(hwndDlg, IP_INFO);
+    char buf[512] = {0};
+    char* pch = NULL;
+
+    int index = ::SendDlgItemMessage(hwndDlg, IP_LIST, LB_GETCURSEL, 0, 0);
+    ::SendDlgItemMessage(hwndDlg, IP_LIST, LB_GETTEXT, index, (long)buf);
+
+    // IP列表选择
+    if (wmEvent == LBN_SELCHANGE) {
+        pch = strtok(buf, " #");
+        if (pch != NULL) {
+            ::SetWindowText(hwnd_edit_ip, buf);
+            pch = strtok(NULL, " #");
+            if (pch != NULL)
+                ::SetWindowText(hwnd_edit_info, pch);
+            else
+                ::SetWindowText(hwnd_edit_info, "");
+        }
+
+    }
+    // 鼠标双击选择IP，复制到剪贴板
+    if (wmEvent == LBN_DBLCLK) {
+        pch = strtok(buf, " #");
+        if (pch != NULL) {
+            CopyTextToClipboard(buf);
+        }
+        strcpy(getip, buf);
+        strcpy(buf, "鼠标双击选择IP   复制IP到剪贴板\n\n再点击左边脚本   将启用选择的IP\n\n");
+        strcat(buf, getip);
+        MessageBox(hwndDlg, buf, getip, MB_OK);
+    }
+}
+
+bool CopyTextToClipboard(const char* text)
+{
+    int i = 0, j = 0;
+    for (; i < 6; i++) {
+        //打开剪切板
+        j = OpenClipboard(NULL);
+
+        //判断是否打开成功，如果打开失败则重新尝试5次
+        if (j == 0 && i < 5)
+            Sleep(60);
+        if (j == 0 && i == 5)
+            return false;
+        if (j != 0) {
+            i = 0;
+            j = 0;
+            break;
+        }
+    }
+    //分配字节数，HGLOBAL表示一个内存块
+    HGLOBAL hmem = GlobalAlloc(GHND, strlen(text) + 1);
+
+    //锁定内存中指定的内存块，并返回一个地址值令其指向内存块的起始处
+    char* pmem = (char*)GlobalLock(hmem);
+
+    //清空剪切板并释放剪切板内数据的句柄
+    EmptyClipboard();
+    memcpy(pmem, text, strlen(text) + 1);
+    SetClipboardData(CF_TEXT, hmem);        //写入数据
+    CloseClipboard();                       //关闭剪切板
+    GlobalFree(hmem);                       //释放内存块
+
+    return true;     //返回成功
+}
+
+
+bool set_server_ip(const char* filename,  const char* newip)
+{
+    FILE* input = fopen(filename, "r+");
+    if (input == NULL) {
+        return false;
+    }
+    FILE* output = tmpfile();
+
+#define LINE_SIZE 1024
+    char line[LINE_SIZE];
+    char* ps;
+    char* Value = "@set SERVER_IP=";
+
+    while (fgets(line, LINE_SIZE, input)) {   // 读取每一行
+        if (ps = strstr(line, Value)) {
+            fprintf(output, "%s%s\n", Value, newip);
+        } else {
+            fputs(line, output);
+        }
+    }
+
+    rewind(output);
+    rewind(input);
+
+    // 回写文件
+    while (fgets(line, LINE_SIZE, output)) {
+
+        fputs(line, input);
+
+    }
+    fclose(output);
+    fclose(input);
+    return true;
 }
