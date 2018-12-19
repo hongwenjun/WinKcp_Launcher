@@ -1,7 +1,11 @@
 @echo.
 @set PATH=%~dp0;%PATH%
 
-@set SERVER_IP=188.188.188.188
+@set SERVER_IP=1.2.3.4
+@set PORT=1999
+@set PASSWORD=sskcp1999
+@set SS_PORT=2018
 
-@start /b kcp-client -r "127.0.0.1:4000" -l ":3322" -mode fast2 -mtu 1300
-@start /b udp2raw -c -r%SERVER_IP%:8855 -l0.0.0.0:4000 -k"passwd" --raw-mode faketcp
+@start /b kcp-client -r "127.0.0.1:4000" -l ":%SS_PORT%" --key %PASSWORD% -mode fast2 -mtu 1300
+@start /b udp2raw -c -r%SERVER_IP%:%PORT% -l0.0.0.0:4000 -k %PASSWORD% --raw-mode faketcp
+
