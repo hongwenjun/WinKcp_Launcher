@@ -17,7 +17,7 @@
 3. 双击 WinKcp_Launcher 分别管理  Windows_KCP.cmd 和 Windows_UDP2RAW.cm 启动关闭 
 4. 电脑$$客户端设置  导入  *ss://YWVzLTI1Ni1nY206c3JnYi54eXpAMTI3LjAuMC4xOjMzMjI=*
 5. 电脑WG客户端设置  导入 wg_client.conf 修改 Endpoint = 127.0.0.1:9009 另存一个配置 
-6. 手机不能装kcp和udp2raw，需要使用PC或者路由器转接
+6. 手机可以使用 ss+kcp
 
 ###  本地电脑端 SS 导入配置，有默认的 SS密码
 ```
@@ -62,28 +62,4 @@ wget -qO- https://git.io/fpnQt | bash
 
 ![](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/Wireguard/bash_wg5.gif)
 
-#### 导出到客户端配置，修改实际的IP，不要修改默认9009端口
-```
-# 查询WireGuard状态
-wg
 
-# 显示配置文件，修改实际的IP，不要修改默认9009端口
-cat /etc/wireguard/client.conf
-```
-### 遇到wg连接主机而没有流量，使用 Ip addr 命令检查vps网卡是否是ensx，参考下面修改配置重启
-```
-#  一键脚本已经检查出vultr主机，自动修改配置，不用再手工运行
-#  vultr 服务商的主机默认网卡是 ens3，使用下面命令修改配置
-sed -i "s/eth0/ens3/g"  /etc/wireguard/wg0.conf
-reboot
-
-#  GCP 香港 Ubuntu系统 默认网卡是 ens4，使用下面命令修改配置(脚本已经自动修改)
-#  GCP 香港 Ubuntu系统 没带python，不能开启临时web下载，可以 apt install -y python 安装
-sed -i "s/eth0/ens4/g"  /etc/wireguard/wg0.conf
-reboot
-```
-
-### Udp2Raw服务TCP伪装 WireGuard 服务端设置脚本
-```
-wget -qO- https://git.io/fpKnF | bash
-```
