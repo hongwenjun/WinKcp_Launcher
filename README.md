@@ -12,16 +12,16 @@
 ![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/WinKcp_Launcher.webp)
 
 ### 使用说明:
-1. 需要先安装 WinPcap_4_1_3.exe (已经包含和其他windows客户端)
+1. 需要先安装 pcap 网络驱动包(WinPcap_4_1_3.exe 或者 npcap-0.99-r8.exe 两者选一个)
 2. 修改 Windows_KCP.cmd 和 Windows_UDP2RAW.cmd 服务器IP参数，双击启动调试
 3. 双击 WinKcp_Launcher 分别管理  Windows_KCP.cmd 和 Windows_UDP2RAW.cm 启动关闭 
-4. 电脑$$客户端设置  导入  *ss://YWVzLTI1Ni1nY206c3JnYi54eXpAMTI3LjAuMC4xOjMzMjI=*
+4. 电脑$$客户端设置  按实际情况填写， IP:127.0.0.1 密码和协议 按脚本提示 
 5. 电脑WG客户端设置  导入 wg_client.conf 修改 Endpoint = 127.0.0.1:9009 另存一个配置 
-6. 手机可以使用 ss+kcp
+6. 手机可以使用 ss+kcp ; KCP 插件参数 按脚本提示
 
 ###  本地电脑端 SS 导入配置，有默认的 SS密码
 ```
-ss://YWVzLTI1Ni1nY206c3JnYi54eXpAMTI3LjAuMC4xOjMzMjI=
+
 ```
 
 ### 参数参考  udp2raw+kcptun 加速tcp流量 Step by Step 教程
