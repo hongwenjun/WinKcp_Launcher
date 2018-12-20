@@ -75,7 +75,7 @@ cat <<EOF >/etc/rc.local
 # SS+KCP+UDP2RAW 加速UDP TCP伪装
 ss-server -s 127.0.0.1 -p 40000 -k ${passwd} -m aes-256-gcm -t 300 >> /var/log/ss-server.log &
 kcp-server -t "127.0.0.1:40000" -l ":${kcp_port}" --key ${passwd} -mode fast2 -mtu 1300  >> /var/log/kcp-server.log &
-udp2raw -s -l0.0.0.0:${ss_raw_port} -r 127.0.0.1:${kcp_port}-k ${passwd} --raw-mode faketcp  >> /var/log/udp2raw.log &
+udp2raw -s -l0.0.0.0:${ss_raw_port} -r 127.0.0.1:${kcp_port} -k ${passwd} --raw-mode faketcp  >> /var/log/udp2raw.log &
 
 # WG + Speeder + Udp2RAW 加速UDP TCP伪装
 speederv2 -s -l127.0.0.1:${speed_port}  -r127.0.0.1:${wg_port}  -f20:10 -k ${passwd} --mode 0  >> /var/log/speederv2.log &
