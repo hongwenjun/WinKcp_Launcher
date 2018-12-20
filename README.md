@@ -1,16 +1,11 @@
-#  Windows udp2raw+kcptun 加速tcp流量 简易工具  by 蘭雅sRGB
 蘭雅sRGB 龙芯小本服务器 | [sRGB.vicp.net](http://sRGB.vicp.net)
 
 ![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/gui.png)
 
-## Shadowsocks + Kcp+Udp2Raw加速 和 Udp2Raw服务TCP伪装 WireGuard Windows Kcp+Udp2Raw 启动器 
+# Shadowsocks + Kcp+Udp2Raw加速 和 Udp2Raw服务TCP伪装 WireGuard Windows Kcp+Udp2Raw 启动器 
 
-使用视频链接.1   https://youtu.be/A4edsGXQdIc
-
-使用视频链接.2   https://youtu.be/BvF6jQo_ZAo
-
-![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/WinKcp_Launcher.webp)
-
+# 使用 bash wgmtu 配置好服务器段后的服务示例
+![](https://raw.githubusercontent.com/hongwenjun/img/master/ss_wg.png)
 ### 使用说明:
 1. 需要先安装 pcap 网络驱动包(WinPcap_4_1_3.exe 或者 npcap-0.99-r8.exe 两者选一个)
 2. 修改 Windows_KCP.cmd 和 Windows_UDP2RAW.cmd 服务器IP参数，双击启动调试
