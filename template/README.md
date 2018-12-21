@@ -1,9 +1,19 @@
 # WireGuard + Speeder + Udp2Raw 和 Shadowsocks + Kcp + Udp2RAW 一键脚本
 ### 请访问 https://github.com/hongwenjun/WinKcp_Launcher 下载客户端程序和模版
 
+[![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/Wireguard/ss_wgmtu.jpg)](https://youtu.be/-sJLfPg12oc)
 
 # 测试范例，仅供学习调试配置使用，请勿滥用，点URL查看流量
 测试服务器流量情况 [http://35.236.155.75](http://35.236.155.75)
+
+### GCP添加防火墙规则 ss-wg-udp
+```
+# 入站  来源IP  0.0.0.0/0 ;指定协议和端口
+tcp:1999,2999,3999,8000; udp:1999,2999,3999,8000
+
+# 最好提前指定，不然要等很久才能生效
+
+```
 
 ###  示例服务端信息
 ```
