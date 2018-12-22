@@ -3,9 +3,6 @@
 
 [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/Wireguard/ss_wgmtu.jpg)](https://youtu.be/-sJLfPg12oc)
 
-# 测试范例，仅供学习调试配置使用，请勿滥用，点URL查看流量
-测试服务器流量情况 [http://35.236.155.75](http://35.236.155.75)
-
 ### GCP添加防火墙规则 ss-wg-udp
 ```
 # 入站  来源IP  0.0.0.0/0 ;指定协议和端口
@@ -73,7 +70,6 @@ PersistentKeepalive = 25
 @route add %SERVER_IP% mask 255.255.255.0 default METRIC default IF default
 @start /b udp2raw -c -r%SERVER_IP%:%PORT% -l0.0.0.0:8888 -k %PASSWORD% --raw-mode faketcp
 @start /b speederv2  -c -l0.0.0.0:%WG_PORT% -r127.0.0.1:8888 -f20:10 -k %PASSWORD% --mode 0
-
 
 ```
 
