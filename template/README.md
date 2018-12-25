@@ -14,7 +14,7 @@ tcp:1999,2999,3999,8000; udp:1999,2999,3999,8000
 
 ###  示例服务端信息
 ```
-按以下实际信息填充    服务器IP: 35.236.155.75
+按以下实际信息填充    服务器IP: 118.24.232.233
   WG+SPEED+UDP2RAW 原端口: 8000 ;  UDP2RAW伪装TCP后端口: 2999 ; 转发密码: wg2999
 
   SS+KCP+UDP2RAW加速: UDP2RAW伪装TCP后端口: 1999 ; SS密码: wg2999 加密协议 aes-256-gcm
@@ -42,15 +42,54 @@ exit 0
 ### 下载模版文件，如图修改红框范围内 IP端口和密码
 ![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/template/wg_ss.png)
 
-###  WG_TW_SPEED_UDP2RAW_TEST.conf      示范WG+Speed+Udp2RAW客户端配置
+### cat /etc/wireguard/wg0.conf    WireGuard 服务端配置文件实例
 ```
 [Interface]
-PrivateKey = GGWbHT5xxQjDzdF/MAowtfMmHmhsWR1qdJAab7Aut2U=
-Address = 10.0.0.5/24
+PrivateKey = cFNf5sTNOXnPygDEuSD8kJ8NlisBY4OOxR/tBpJ7+Ws=
+Address = 10.0.0.1/24
+PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+ListenPort = 8000
+DNS = 8.8.8.8
+MTU = 1420
+
+[Peer]
+PublicKey = p4L8R4YutqtSq64pAmOclcdqdo0e1Jo5lTQh0Um8BH4=
+AllowedIPs = 10.0.0.218/32
+
+[Peer]
+PublicKey = c1R+xHfGweOAotOQNdcqeMlFHzG8L6oNp8ai/MARQik=
+AllowedIPs = 10.0.0.2/32
+
+[Peer]
+PublicKey = /cHDZfLZm8OLPiPjMxhlA8U+sd1tOPwf6qXhpm38dQI=
+AllowedIPs = 10.0.0.3/32
+
+```
+
+### cat /etc/wireguard/wg_VM-0-13-debian_3.conf   WireGuard直连配置
+```
+[Interface]
+PrivateKey = aMWVZ78fCeOG1e0ljJ06cvHqyXVqbfsEw4pZz+TNW24=
+Address = 10.0.0.3/24
 DNS = 8.8.8.8
 
 [Peer]
-PublicKey = +rAd6hO5oox8GfzIHsycaj7h2aITrz12R0C8XRHnrCI=
+PublicKey = 7+lLY7yN97cbwe/OkNR4pyHuX/uCiVc/maPrneVcHg8=
+Endpoint = 118.24.232.233:8000
+AllowedIPs = 0.0.0.0/0, ::0/0
+PersistentKeepalive = 25
+```
+
+###  WG_TW_SPEED_UDP2RAW_TEST.conf      示范WG+Speed+Udp2RAW客户端配置
+```
+[Interface]
+PrivateKey = aMWVZ78fCeOG1e0ljJ06cvHqyXVqbfsEw4pZz+TNW24=
+Address = 10.0.0.3/24
+DNS = 8.8.8.8
+
+[Peer]
+PublicKey = 7+lLY7yN97cbwe/OkNR4pyHuX/uCiVc/maPrneVcHg8=
 Endpoint = 127.0.0.1:8000
 AllowedIPs = 0.0.0.0/0, ::0/0
 PersistentKeepalive = 25
@@ -62,7 +101,7 @@ PersistentKeepalive = 25
 @echo.
 @set PATH=%~dp0;%PATH%
 
-@set SERVER_IP=35.236.155.75
+@set SERVER_IP=118.24.232.233
 @set PORT=2999
 @set PASSWORD=wg2999
 @set WG_PORT=8000
@@ -78,7 +117,7 @@ PersistentKeepalive = 25
 @echo.
 @set PATH=%~dp0;%PATH%
 
-@set SERVER_IP=35.236.155.75
+@set SERVER_IP=118.24.232.233
 @set PORT=1999
 @set PASSWORD=wg2999
 @set SS_PORT=2018
