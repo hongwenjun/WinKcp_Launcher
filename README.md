@@ -22,6 +22,7 @@ ss://YWVzLTI1Ni1nY206c3NrY3AxOTk5QDEyNy4wLjAuMToyMDE4#SS%2bKCP%2budp2raw
 ### 参数参考  udp2raw+kcptun 加速tcp流量 Step by Step 教程
 https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md
 
+![](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/speed_raw.png)
 
 ### Shadowsocks+Kcp+Udp2Raw加速 服务端  debian 9  Ubuntu
 ```
@@ -46,15 +47,14 @@ wget https://raw.githubusercontent.com/atrandys/wireguard/master/wireguard_insta
 && chmod +x wireguard_install.sh && ./wireguard_install.sh
 
 ```
-[![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/Wireguard/ss_wg.jpg)](https://youtu.be/-cfuQSaJb5w)
+[![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/ss_wg.jpg)](https://youtu.be/-cfuQSaJb5w)
 
 ###  一键 WireGuard 多用户配置共享脚本
 ```
 # 一键 WireGuard 多用户配置共享脚本 
 wget -qO- https://git.io/fpnQt | bash
 ```
-[![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/Wireguard/wg5clients.jpg)](https://youtu.be/TOaihmhrYQY)
+[![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/wg5clients.jpg)](https://youtu.be/TOaihmhrYQY)
 
-![](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/Wireguard/bash_wg5.gif)
 
 
