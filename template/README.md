@@ -43,7 +43,7 @@ AllowedIPs = 10.0.0.3/32
 
 ```
 
-[![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/Wireguard/ss_wgmtu.jpg)](https://youtu.be/-sJLfPg12oc)
+[![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/ss_wgmtu.jpg)](https://youtu.be/-sJLfPg12oc)
 
 ### GCP添加防火墙规则 ss-wg-udp
 ```
@@ -98,6 +98,8 @@ AllowedIPs = 0.0.0.0/0, ::0/0
 PersistentKeepalive = 25
 
 ```
+
+![双击Windows_UDP2RAW.cmd，启动调试，正确调试信息参考如图](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/speed_udp2raw_debug.png)
 
 ###  Windows_UDP2RAW.cmd  示范客户端开启串接模版
 ```
