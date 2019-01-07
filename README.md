@@ -1,8 +1,15 @@
 蘭雅sRGB 龙芯小本服务器 | [sRGB.vicp.net](http://sRGB.vicp.net)
-
+### Shadowsocks + Kcp+Udp2Raw加速 和 Udp2Raw服务TCP伪装 WireGuard Windows Kcp+Udp2Raw 启动器 
 ![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/gui.png)
 
-### Shadowsocks + Kcp+Udp2Raw加速 和 Udp2Raw服务TCP伪装 WireGuard Windows Kcp+Udp2Raw 启动器 
+### 猪事顺利，青春永猪，猪圆玉润，猪笼入水---八面来财
+![](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/zfb_hb.png)
+
+### 一键安装wireguard 参考演示视频集合
+| [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/ss_wgmtu.jpg)](https://youtu.be/-sJLfPg12oc) | [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/wg_mac_pc_tel.jpg)](https://youtu.be/dkXWicxak3w) | [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/wgmtu.jpg)](https://youtu.be/e86tCRDqu8c) |
+| :------| ------: | :------: |
+| [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/iptables_ytb.jpg)](https://youtu.be/Jb3b8SbFQLM) | [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/winkcp_ytb.jpg)](https://youtu.be/HjGO2sAPOFM) | [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/gcp_ssh_key.jpg)](https://youtu.be/qhwK5XUJeWE)|
+| [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/wg5clients.jpg)](https://youtu.be/TOaihmhrYQY) | [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/tel_pc.jpg)](https://youtu.be/O__RsZewA60) | [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/ss_wg.jpg)](https://youtu.be/-cfuQSaJb5w)|
 
 ###使用 bash wgmtu 配置好服务器段后的服务示例
 
@@ -50,13 +57,6 @@ wget https://raw.githubusercontent.com/atrandys/wireguard/master/wireguard_insta
 
 ```
 
-### 一键安装wireguard 参考演示视频集合
-
-| [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/ss_wgmtu.jpg)](https://youtu.be/-sJLfPg12oc) | [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/wg_mac_pc_tel.jpg)](https://youtu.be/dkXWicxak3w) | [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/wgmtu.jpg)](https://youtu.be/e86tCRDqu8c) |
-| :------| ------: | :------: |
-| [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/wg5clients.jpg)](https://youtu.be/TOaihmhrYQY) | [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/tel_pc.jpg)](https://youtu.be/O__RsZewA60) | [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/ss_wg.jpg)](https://youtu.be/-cfuQSaJb5w)|
-
-```
 # 一键 WireGuard 多用户配置共享脚本 
 wget -qO- https://git.io/fpnQt | bash
 ```
