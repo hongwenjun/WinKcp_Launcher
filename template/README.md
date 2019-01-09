@@ -23,8 +23,8 @@ PersistentKeepalive = 25
 [Interface]
 PrivateKey = cFNf5sTNOXnPygDEuSD8kJ8NlisBY4OOxR/tBpJ7+Ws=
 Address = 10.0.0.1/24
-PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+PostUp   = iptables -I FORWARD -i wg0 -j ACCEPT; iptables -I FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
 ListenPort = 8000
 DNS = 8.8.8.8
 MTU = 1420
@@ -143,4 +143,40 @@ ss://YWVzLTI1Ni1nY206d2cyOTk5QDEyNy4wLjAuMToyMDE4#test
   https://github.com/shadowsocks/kcptun-android/releases
   
   KCPTUN端口: 4000 ; KCP插件设置参数 mode=fast2;key=wg2999;mtu=1300
+```
+
+
+###  START_APP.cmd  示范客户端开启串接模版
+```
+@echo.
+@set PATH=%~dp0;%PATH%
+
+::  两个冒号是注释，删除命令行首开启命令
+
+::  运行 WireGuard 客户端 TunSafe
+::  CD /D  C:\soft\TunSafe\
+::  start TunSafe.exe
+
+::  运行 Shadowsocks 客户端
+::  CD /D  C:\soft\Shadowsocks
+::  start Shadowsocks.exe
+
+::  BROOK + KcpTun + Udp2Raw 客户端接口配置
+@set SERVER_IP=1.2.3.4
+@set PORT=2999
+@set PASSWORD=wg2999
+@set BK_PORT=3999
+
+@start /b kcp-client -r "127.0.0.1:4000" -l ":%BK_PORT%" --key %PASSWORD% -mode fast2 -mtu 1300
+@start /b udp2raw -c -r%SERVER_IP%:%PORT% -l0.0.0.0:4000 -k %PASSWORD% --raw-mode faketcp
+
+
+::  打开 Brook 客户端服务
+set IP_URL=127.0.0.1
+set PASSWORD=wg2999
+set PORT=3999
+
+CD /D  C:\soft\Brook
+start /b  brook client -l 127.0.0.1:2080 -i 127.0.0.1 -s %IP_URL%:%PORT% -p %PASSWORD%
+
 ```

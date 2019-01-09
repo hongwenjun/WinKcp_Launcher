@@ -1,14 +1,13 @@
 #!/bin/bash
 
 # 密码随机，脚本提供修改
-str=$(date | md5sum  | awk '{print $1}')
-passwd=${str:0:8}
+passwd=$(date | md5sum  | head -c 6)
 
 # 端口参数, 为了简单好用，请下载脚本自编辑修改
 wg_port=$(wg | grep 'listening port:' | awk '{print $3}')
 raw_port=2999
 speed_port=8888
-serverip=$(curl -4 icanhazip.com)
+serverip=$(curl -4 ip.sb)
 
 ss_raw_port=1999
 kcp_port=4000
@@ -45,7 +44,6 @@ udp2raw_install()
     mv server_linux_amd64 /usr/bin/kcp-server
     rm kcptun-linux-amd64-20181114.tar.gz
     rm client_linux_amd64
-    rm server_linux_amd64
 
     # 下载 UDPspeeder
     wget https://github.com/wangyu-/UDPspeeder/releases/download/20180806.0/speederv2_linux.tar.gz
@@ -66,12 +64,12 @@ cat <<EOF >/etc/rc.local
 #
 # rc.local
 
-# SS+KCP+UDP2RAW 加速UDP TCP伪装
+# SS + KcpTun + Udp2RAW  or (SSR BROOK)
 ss-server -s 127.0.0.1 -p 40000 -k ${passwd} -m aes-256-gcm -t 300 >> /var/log/ss-server.log &
 kcp-server -t "127.0.0.1:40000" -l ":${kcp_port}" --key ${passwd} -mode fast2 -mtu 1300  >> /var/log/kcp-server.log &
 udp2raw -s -l0.0.0.0:${ss_raw_port} -r 127.0.0.1:${kcp_port} -k ${passwd} --raw-mode faketcp  >> /var/log/udp2raw.log &
 
-# WG + Speeder + Udp2RAW 加速UDP TCP伪装
+# WG + Speeder + Udp2RAW  or (V2ray udp)
 speederv2 -s -l127.0.0.1:${speed_port}  -r127.0.0.1:${wg_port}  -f20:10 -k ${passwd} --mode 0  >> /var/log/speederv2.log &
 udp2raw   -s -l0.0.0.0:${raw_port}  -r 127.0.0.1:${speed_port}  -k ${passwd} --raw-mode faketcp  >> /var/log/wg_udp2raw.log &
 
