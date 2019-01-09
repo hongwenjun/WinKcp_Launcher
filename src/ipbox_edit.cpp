@@ -131,6 +131,9 @@ void ipbox_list_signal(HWND &hwndDlg, int wmEvent)
                 ::SetWindowText(hwnd_edit_info, "");
         }
 
+        strcpy(buf, "   信息: IP 管理功能，添加和删除后，请点保存！");
+        ::SetWindowText(::GetDlgItem(hwndDlg, IDC_INFO_TEXT), buf);
+
     }
     // 鼠标双击选择IP，复制到剪贴板
     if (wmEvent == LBN_DBLCLK) {
@@ -138,10 +141,23 @@ void ipbox_list_signal(HWND &hwndDlg, int wmEvent)
         if (pch != NULL) {
             CopyTextToClipboard(buf);
         }
+
+        // 更细提示信息
         strcpy(getip, buf);
-        strcpy(buf, "鼠标双击选择IP   复制IP到剪贴板\n\n再点击左边脚本   将启用选择的IP\n\n");
+        strcpy(buf, "   信息: IP已复制到剪贴板，方便其他程序使用！");
+        ::SetWindowText(::GetDlgItem(hwndDlg, IDC_INFO_TEXT), buf);
+
+        //   MessageBox(hwndDlg, buf, getip, MB_OK);
+
+        //  更新命令按钮文本
+        strcpy(buf, "开启Speeder + Udp2Raw加速TCP伪装      选择IP: ");
         strcat(buf, getip);
-        MessageBox(hwndDlg, buf, getip, MB_OK);
+        ::SetWindowText(::GetDlgItem(hwndDlg, OPEN_UDP2RAW ), buf);
+
+        strcpy(buf, "开启KcpTun + Udp2Raw加速TCP伪装       选择IP: ");
+        strcat(buf, getip);
+        ::SetWindowText(::GetDlgItem(hwndDlg, OPEN_KCP), buf);
+
     }
 }
 
