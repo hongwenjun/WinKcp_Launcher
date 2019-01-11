@@ -1,9 +1,6 @@
 蘭雅sRGB 龙芯小本服务器 | [sRGB.vicp.net](http://sRGB.vicp.net)
-### Shadowsocks + Kcp+Udp2Raw加速 和 Udp2Raw服务TCP伪装 WireGuard Windows Kcp+Udp2Raw 启动器 
+### Shadowsocks + Kcp+Udp2Raw加速 和 Udp2Raw服务TCP伪装 WireGuard Windows Kcp+Udp2Raw 启动器
 ![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/gui.png)
-
-### 猪事顺利，青春永猪，猪圆玉润，猪笼入水---八面来财
-![](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/zfb_hb.png)
 
 ### 一键安装wireguard 参考演示视频集合
 | [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/ss_wgmtu.jpg)](https://youtu.be/-sJLfPg12oc) | [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/wg_mac_pc_tel.jpg)](https://youtu.be/dkXWicxak3w) | [![ScreenShot](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/wgmtu.jpg)](https://youtu.be/e86tCRDqu8c) |
@@ -18,9 +15,9 @@
 ### 使用说明:
 1. 需要先安装 pcap 网络驱动包(WinPcap_4_1_3.exe 或者 npcap-0.99-r8.exe 两者选一个)
 2. 修改 Windows_KCP.cmd 和 Windows_UDP2RAW.cmd 服务器IP参数，双击启动调试
-3. 双击 WinKcp_Launcher 分别管理  Windows_KCP.cmd 和 Windows_UDP2RAW.cm 启动关闭 
+3. 双击 WinKcp_Launcher 分别管理  Windows_KCP.cmd 和 Windows_UDP2RAW.cm 启动关闭
 4. 电脑$$客户端设置  导入下面的模版配置，再修改成实际密码
-5. 电脑WG客户端设置  导入 wg_client.conf 修改 Endpoint = 127.0.0.1:端口 另存一个配置 
+5. 电脑WG客户端设置  导入 wg_client.conf 修改 Endpoint = 127.0.0.1:端口 另存一个配置
 6. 手机可以使用 ss+kcp ; KCP插件参数 按脚本提示
 
 ###  本地电脑端 SS 导入配置，再修改成脚本的实际密码
@@ -47,16 +44,6 @@ wget -qO- git.io/fx6UQ | bash
 # 一键安装wireguard 脚本 Debian 9 (源:逗比网安装笔记)
 wget -qO- git.io/fptwc | bash
 
-# 一键安装wireguard 脚本 Ubuntu 18(源:逗比网安装笔记)
-wget -qO- git.io/fpcnL | bash
-
-# CentOS7一键脚本安装WireGuard   (https://atrandys.com/2018/886.html)
-yum install -y wget && \
-wget https://raw.githubusercontent.com/atrandys/wireguard/master/wireguard_install.sh \
-&& chmod +x wireguard_install.sh && ./wireguard_install.sh
-
-```
-
-# 一键 WireGuard 多用户配置共享脚本 
+# 一键 WireGuard 多用户配置共享脚本
 wget -qO- https://git.io/fpnQt | bash
 ```
