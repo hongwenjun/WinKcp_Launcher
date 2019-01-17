@@ -108,6 +108,29 @@ void ipbox_load(HWND &hwndDlg)
     }
 }
 
+// 读取 START_APP.cmd 中的标题
+void read_appname(HWND &hwndDlg)
+{
+    char buf[512] = {0};
+    char* pch;
+    char* ps;
+    char* value = "@TITLE";
+
+    FILE*  pFile = fopen("START_APP.cmd", "r");
+    if (pFile != NULL) {
+        while (fgets(buf, 512, pFile) != NULL) {
+            if (ps = strstr(buf, value)) {
+                pch = strtok(buf, " \t");
+                if (pch != NULL) {
+                    pch = strtok(NULL, " \t");
+                    ::SetWindowText(::GetDlgItem(hwndDlg, OPEN_START_APP), pch);
+                }
+            }
+        }
+        fclose(pFile);
+    }
+}
+
 void ipbox_list_signal(HWND &hwndDlg, int wmEvent)
 {
 
@@ -152,7 +175,7 @@ void ipbox_list_signal(HWND &hwndDlg, int wmEvent)
         //  更新命令按钮文本
         strcpy(buf, "开启Speeder + Udp2Raw加速TCP伪装      选择IP: ");
         strcat(buf, getip);
-        ::SetWindowText(::GetDlgItem(hwndDlg, OPEN_UDP2RAW ), buf);
+        ::SetWindowText(::GetDlgItem(hwndDlg, OPEN_UDP2RAW), buf);
 
         strcpy(buf, "开启KcpTun + Udp2Raw加速TCP伪装       选择IP: ");
         strcat(buf, getip);
@@ -161,6 +184,7 @@ void ipbox_list_signal(HWND &hwndDlg, int wmEvent)
     }
 }
 
+// 复制文本到剪贴板
 bool CopyTextToClipboard(const char* text)
 {
     int i = 0, j = 0;
@@ -195,7 +219,7 @@ bool CopyTextToClipboard(const char* text)
     return true;     //返回成功
 }
 
-
+// 设置批处理文件中的服务器IP
 bool set_server_ip(const char* filename,  const char* newip)
 {
     FILE* input = fopen(filename, "r+");

@@ -32,6 +32,7 @@
 		</Build>
 		<Compiler>
 			<Add option="/W3" />
+			<Add option="/D_CRT_SECURE_NO_WARNINGS" />
 			<Add directory="$(#psdk.include)" />
 		</Compiler>
 		<Linker>

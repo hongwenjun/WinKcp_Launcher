@@ -9,7 +9,7 @@ bool open_kcp_server(void);
 bool open_start_app(void);
 bool close_kcp_server(void);
 bool open_wireguard_udp2raw(void);
-
+bool kill_advert_process(void);
 
 void App_Initdialog(HWND & hwnd);
 
@@ -67,6 +67,7 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
             case CLOSE_KCP: {
                     close_kcp_server();
+                    kill_advert_process();
                     EndDialog(hwndDlg, 0);
                 }
                 break;
@@ -124,6 +125,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 bool open_start_app(void)
 {
+    char newip[128] = {0};
+    getnewip(newip);
+    if (strcmp(newip, "NULL") != 0)
+        set_server_ip("START_APP.cmd", newip);
+
     char cmdline[] = "cmd /c START_APP.cmd";
     hide_run_cmd(cmdline);
 
@@ -163,8 +169,15 @@ bool open_wireguard_udp2raw(void)
 bool close_kcp_server(void)
 {
     char cmdline[] = "taskkill.exe /im kcp-client.exe  /f /im udp2raw.exe  /im speederv2.exe "
-                     "/im YunDetectService.exe  /im AlibabaprotectUI.exe   /im acrotray.exe "
                      "/im brook.exe  /im TunSafe.exe ";
+    hide_run_cmd(cmdline);
+
+    return true;
+}
+
+bool kill_advert_process(void)
+{
+    char cmdline[] = "taskkill.exe /im YunDetectService.exe  /im AlibabaprotectUI.exe /im acrotray.exe ";
     hide_run_cmd(cmdline);
 
     return true;
@@ -202,7 +215,6 @@ int hide_run_cmd(char* cmdline)
     return ret;
 }
 
-
 void App_Initdialog(HWND & hwnd)
 {
 
@@ -220,4 +232,7 @@ void App_Initdialog(HWND & hwnd)
         HWND hwnd_ipbox = ::GetDlgItem(hwnd, ipbox[i]);
         ::ShowWindow(hwnd_ipbox, SW_HIDE);
     }
+
+    // 读取自定义程序标题名
+    read_appname(hwnd);
 }

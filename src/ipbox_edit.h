@@ -17,6 +17,7 @@ void ipbox_add(HWND &hwndDlg);
 void ipbox_del(HWND &hwndDlg);
 void ipbox_save(HWND &hwndDlg);
 void ipbox_load(HWND &hwndDlg);
+void read_appname(HWND &hwndDlg);
 void ipbox_list_signal(HWND &hwndDlg, int wmEvent);
 
 bool CopyTextToClipboard(const char* text);
