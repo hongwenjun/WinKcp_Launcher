@@ -11,7 +11,7 @@
 如果你在中国境内使用、测试此项目脚本，或者使用此脚本搭建服务器发生以上违法行为，都有违作者意愿！
 你必须立刻停止此行为！并删除脚本！
 
-###使用 bash wgmtu 配置好服务器段后的服务示例
+### 使用 bash wgmtu 配置好服务器段后的服务示例
 ![](https://raw.githubusercontent.com/hongwenjun/img/master/ss_wg.png)
 
 ### 使用说明:
@@ -48,4 +48,13 @@ wget -qO- git.io/fptwc | bash
 
 # 一键 WireGuard 多用户配置共享脚本
 wget -qO- https://git.io/fpnQt | bash
+```
+
+### 个人浙江电信重启电脑后，Npcap网络驱动有问题
+-可以 重启网卡（Npcap Loopback Adapter）或 再装npcap-0.99-r8.exe 解决
+```
+:: 重启网卡（Npcap Loopback Adapter）
+netsh interface set interface "Npcap Loopback Adapter" disabled
+@ping 127.0.0.1 -n 3 >nul
+netsh interface set interface "Npcap Loopback Adapter" enabled
 ```

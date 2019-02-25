@@ -222,7 +222,7 @@ bool CopyTextToClipboard(const char* text)
 // 设置批处理文件中的服务器IP
 bool set_server_ip(const char* filename,  const char* newip)
 {
-    FILE* input = fopen(filename, "r+");
+    FILE* input = fopen(filename, "r");
     if (input == NULL) {
         return false;
     }
@@ -241,9 +241,10 @@ bool set_server_ip(const char* filename,  const char* newip)
         }
     }
 
+    fclose(input);
     rewind(output);
-    rewind(input);
 
+    input = fopen(filename, "w");
     // 回写文件
     while (fgets(line, LINE_SIZE, output)) {
 
