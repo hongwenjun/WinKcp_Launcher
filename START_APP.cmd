@@ -1,18 +1,18 @@
-?@TITLE ÔËĞĞBrook¿Í»§¶Ë
+@TITLE è¿è¡ŒBrookå®¢æˆ·ç«¯Kcp+Udp2RAW
 @echo.
 @set PATH=%~dp0;%PATH%
 
-::  Á½¸öÃ°ºÅÊÇ×¢ÊÍ£¬É¾³ıÃüÁîĞĞÊ×¿ªÆôÃüÁî
+::  ä¸¤ä¸ªå†’å·æ˜¯æ³¨é‡Šï¼Œåˆ é™¤å‘½ä»¤è¡Œé¦–å¼€å¯å‘½ä»¤
 
-::  ÔËĞĞ WireGuard ¿Í»§¶Ë TunSafe
+::  è¿è¡Œ WireGuard å®¢æˆ·ç«¯ TunSafe
 ::  CD /D  C:\soft\TunSafe\
 ::  start TunSafe.exe
 
-::  ÔËĞĞ Shadowsocks ¿Í»§¶Ë
+::  è¿è¡Œ Shadowsocks å®¢æˆ·ç«¯
 ::  CD /D  C:\soft\Shadowsocks
 ::  start Shadowsocks.exe
 
-::  BROOK + KcpTun + Udp2Raw ¿Í»§¶Ë½Ó¿ÚÅäÖÃ
+::  BROOK + KcpTun + Udp2Raw å®¢æˆ·ç«¯æ¥å£é…ç½®
 @set SERVER_IP=1.2.3.4
 @set PORT=2999
 @set PASSWORD=wg2999
@@ -22,7 +22,7 @@
 @start /b udp2raw -c -r%SERVER_IP%:%PORT% -l0.0.0.0:4000 -k %PASSWORD% --raw-mode faketcp
 
 
-::  ´ò¿ª Brook ¿Í»§¶Ë·şÎñ
+::  æ‰“å¼€ Brook å®¢æˆ·ç«¯æœåŠ¡
 set IP_URL=127.0.0.1
 set PASSWORD=wg2999
 set PORT=3999
