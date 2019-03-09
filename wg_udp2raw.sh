@@ -15,10 +15,11 @@ kcp_port=4000
 ########################################################
 clear
 # 定义文字颜色
-Green="\033[32m"  && Red="\033[31m" && GreenBG="\033[42;37m" && RedBG="\033[41;37m" && Font="\033[0m"
+Green="\033[32m"  && Red="\033[31m" && GreenBG="\033[42;37m" && RedBG="\033[41;37m"
+Font="\033[0m"  && Yellow="\033[0;33m" && SkyBlue="\033[0;36m"
 
 echo -e "${RedBG}   WireGuard + Speeder + Udp2Raw 和 Shadowsocks + Kcp + Udp2RAW 一键脚本   ${Font}"
-echo -e "${GreenBG}             开源项目：https://github.com/hongwenjun/vps_setup             ${Font}"
+echo -e "${SkyBlue}             开源项目：https://github.com/hongwenjun/vps_setup             ${Font}"
 echo -e "请访问 ${GreenBG}https://github.com/hongwenjun/WinKcp_Launcher${Font} 下载客户端程序和模版"
 echo -e "随机生成密码: ${RedBG} ${passwd} ${Font} 现在可修改; 端口参数为了简单好用，熟悉脚本自行修改"
 
@@ -83,13 +84,18 @@ systemctl stop rc-local
 chmod +x /etc/rc.local
 systemctl restart rc-local
 
-echo -e "${RedBG}---------------- 请复制笔记 /etc/rc.local 服务端设置配置文件 ---------------------${Font}"
-cat /etc/rc.local
+put_config(){
+    echo -e "${SkyBlue}:: WG+Speeder+Udp2Raw 和 SS+Kcp+Udp2RAW 配置信息, 再查${GreenBG} cat vps_setup.log ${Font}"
+    cat /etc/rc.local
 
-echo -e "请访问 ${GreenBG}https://github.com/hongwenjun/WinKcp_Launcher${Font} 下载客户端程序和模版"
-echo -e "按以下实际信息填充   ${RedBG} 服务器IP: ${serverip} ${Font} "
-echo -e "${GreenBG}  WG+SPEED+UDP2RAW 原端口: ${wg_port} ;  UDP2RAW伪装TCP后端口: ${raw_port} ; 转发密码: ${passwd} ${Font}"
-echo -e "${RedBG}  SS+KCP+UDP2RAW加速: UDP2RAW伪装TCP后端口: ${ss_raw_port} ; SS密码: ${passwd} 加密协议 aes-256-gcm ${Font}"
-echo -e "${GreenBG} 手机SS+KCP加速方案: KCPTUN端口: ${kcp_port} ; KCP插件设置参数 mode=fast2;key=${passwd};mtu=1300  ${Font}"
-echo
-echo -e "${GreenBG}             开源项目：https://github.com/hongwenjun/vps_setup              ${Font}"
+    echo -e "请访问 ${GreenBG}https://github.com/hongwenjun/WinKcp_Launcher${Font} 下载客户端程序和模版"
+    echo -e "按以下实际信息填充   ${RedBG} 服务器IP: ${serverip} ${Font} "
+    echo -e "${Yellow}  WG+SPEED+UDP2RAW 原端口: ${wg_port} ;  UDP2RAW伪装TCP后端口: ${raw_port} ; 转发密码: ${passwd} ${Font}"
+    echo -e "${Red}  SS+KCP+UDP2RAW加速: UDP2RAW伪装TCP后端口: ${ss_raw_port} ; SS密码: ${passwd} 加密协议 aes-256-gcm ${Font}"
+    echo -e "${Green}  手机SS+KCP加速方案: KCPTUN端口: ${kcp_port} ; KCP插件设置参数 mode=fast2;key=${passwd};mtu=1300  ${Font}"
+    echo
+    echo -e "${SkyBlue}             开源项目：https://github.com/hongwenjun/vps_setup              ${Font}"
+}
+
+cur_dir=$(pwd) && clear
+put_config 2>&1 | tee ${cur_dir}/vps_setup.log

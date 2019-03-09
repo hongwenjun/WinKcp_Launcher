@@ -111,7 +111,8 @@ PersistentKeepalive = 25
 @set PASSWORD=wg2999
 @set WG_PORT=8000
 
-@route add %SERVER_IP% mask 255.255.255.0 default METRIC default IF default
+@set GATEWAY=192.168.1.1
+@route DELETE %SERVER_IP%  && route ADD %SERVER_IP% mask 255.255.255.255 %GATEWAY% METRIC 20
 @start /b udp2raw -c -r%SERVER_IP%:%PORT% -l0.0.0.0:8888 -k %PASSWORD% --raw-mode faketcp
 @start /b speederv2  -c -l0.0.0.0:%WG_PORT% -r127.0.0.1:8888 -f20:10 -k %PASSWORD% --mode 0
 
@@ -139,9 +140,9 @@ ss://YWVzLTI1Ni1nY206d2cyOTk5QDEyNy4wLjAuMToyMDE4#test
 
 ### 手机SS+KCP加速方案
 ```
-  # 手机SS  KCP插件下载URL
+  # 手机SS  KCP插件下载URL; 权限设置: SS和KCP插件能后台运行和管理启动
   https://github.com/shadowsocks/kcptun-android/releases
-  
+
   KCPTUN端口: 4000 ; KCP插件设置参数 mode=fast2;key=wg2999;mtu=1300
 ```
 
@@ -150,6 +151,7 @@ ss://YWVzLTI1Ni1nY206d2cyOTk5QDEyNy4wLjAuMToyMDE4#test
 ```
 @echo.
 @set PATH=%~dp0;%PATH%
+@TITLE 自定APP名称
 
 ::  两个冒号是注释，删除命令行首开启命令
 
