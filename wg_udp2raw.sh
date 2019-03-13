@@ -88,13 +88,13 @@ EOF
 systemctl stop rc-local
 
 # 简化判断系统 debian/centos 族群
-if [ ! -e '/etc/redhat-release' ]; then 
-	mv /etc/rc.local /etc/rc.d/rc.local
-	ln -s /etc/rc.d/rc.local /etc/rc.local
+if [ -e '/etc/redhat-release' ]; then 
+    mv /etc/rc.local /etc/rc.d/rc.local
+    ln -s /etc/rc.d/rc.local /etc/rc.local
     chmod +x /etc/rc.d/rc.local
     systemctl enable rc-local
 else
-	chmod +x /etc/rc.local	
+    chmod +x /etc/rc.local	
 fi
 
 systemctl restart rc-local
