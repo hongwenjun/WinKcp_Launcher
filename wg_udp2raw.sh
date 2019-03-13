@@ -7,10 +7,14 @@ passwd=$(date | md5sum  | head -c 6)
 wg_port=$(wg | grep 'listening port:' | awk '{print $3}')
 raw_port=2999
 speed_port=8888
-serverip=$(curl -4 ip.sb)
 
 ss_raw_port=1999
 kcp_port=4000
+
+if [ ! -e '/var/ip_addr' ]; then
+	echo -n $(curl -4 ip.sb) > /var/ip_addr
+fi
+serverip=$(cat /var/ip_addr)
 
 ########################################################
 clear
@@ -56,7 +60,7 @@ udp2raw_install()
 }
 
 # 首次运行脚本需要安装
-if [ ! -f '/usr/bin/speederv2' ]; then
+if [ ! -e '/usr/bin/speederv2' ]; then
     udp2raw_install
 fi
 
@@ -79,9 +83,20 @@ exit 0
 
 EOF
 
+
 # 重启启动项服务
 systemctl stop rc-local
-chmod +x /etc/rc.local
+
+# 简化判断系统 debian/centos 族群
+if [ ! -e '/etc/redhat-release' ]; then 
+	mv /etc/rc.local /etc/rc.d/rc.local
+	ln -s /etc/rc.d/rc.local /etc/rc.local
+    chmod +x /etc/rc.d/rc.local
+    systemctl enable rc-local
+else
+	chmod +x /etc/rc.local	
+fi
+
 systemctl restart rc-local
 
 put_config(){

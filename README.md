@@ -11,7 +11,7 @@
 
 ### 使用说明:
 1. 需要先安装 pcap 网络驱动包(Wpcap-0.99-r8.exe 或者 WinPcap_4_1_3.exe 两者选一个)
-2. 修改 Windows_KCP.cmd 和 Windows_UDP2RAW.cmd 服务器IP参数，双击启动调试
+2. 修改 [Windows_KCP.cmd 和 Windows_UDP2RAW.cmd 服务器IP参数](https://github.com/hongwenjun/WinKcp_Launcher/tree/master/template)，双击启动调试
 3. 双击 WinKcp_Launcher 分别管理  Windows_KCP.cmd 和 Windows_UDP2RAW.cm 启动关闭
 4. 电脑$$客户端设置  导入下面的模版配置，再修改成实际密码
 5. 电脑WG客户端设置  导入 wg_client.conf 修改 Endpoint = 127.0.0.1:端口 另存一个配置
