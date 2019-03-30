@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "resource.h"
 #include "ipbox_edit.h"
+#include "launcher.h"
 
 int hide_run_cmd(char* cmdline);
 bool open_kcp_server(void);
@@ -105,6 +106,13 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
             }
         }
         return TRUE;
+
+    case WM_LBUTTONDOWN: {
+            // 鼠标单击信号传替
+            mouse_click_signal(hwndDlg, lParam);
+        break;
+        }
+
     }
     return FALSE;
 }

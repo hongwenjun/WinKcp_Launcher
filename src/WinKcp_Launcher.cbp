@@ -44,6 +44,8 @@
 		</Linker>
 		<Unit filename="ipbox_edit.cpp" />
 		<Unit filename="ipbox_edit.h" />
+		<Unit filename="launcher.cpp" />
+		<Unit filename="launcher.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="manifest.xml" />
 		<Unit filename="resource.h" />
