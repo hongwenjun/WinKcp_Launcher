@@ -57,7 +57,7 @@ FONT 8, "Ms Shell Dlg"
     GROUPBOX        "服务器地址管理", IP_BOX, 198, 7, 158, 155, 0, WS_EX_LEFT
     LTEXT           "IP:", IP_LT1, 202, 20, 10, 8, SS_LEFT, WS_EX_LEFT
     LTEXT           "备注", IP_LT2, 288, 19, 17, 8, SS_LEFT, WS_EX_LEFT
-    LTEXT           "   信息: 程序增加IP管理功能，请双击选用IP", IDC_INFO_TEXT, 6, 143, 185, 21, SS_LEFT | SS_CENTERIMAGE, WS_EX_STATICEDGE
+    LTEXT           "   信息: 点击信息栏，切换提示！更新(2019.3.31)", IDC_INFO_TEXT, 6, 143, 185, 21, SS_LEFT | SS_CENTERIMAGE, WS_EX_STATICEDGE
 }
 
 

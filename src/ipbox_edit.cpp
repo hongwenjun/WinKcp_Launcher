@@ -104,8 +104,8 @@ void ipbox_load(HWND &hwndDlg)
             if (strlen(buf) > 0)
                 ::SendDlgItemMessage(hwndDlg, IP_LIST, LB_ADDSTRING, NULL, (long)buf);
         }
-        fclose(pFile);
     }
+    fclose(pFile);
 }
 
 // 读取 START_APP.cmd 中的标题
@@ -154,7 +154,9 @@ void ipbox_list_signal(HWND &hwndDlg, int wmEvent)
                 ::SetWindowText(hwnd_edit_info, "");
         }
 
-        strcpy(buf, "   信息: IP 管理功能，添加和删除后，请点保存！");
+
+
+        strcpy(buf, "   信息: IP 管理功能，添加和删除后，请点保存!");
         ::SetWindowText(::GetDlgItem(hwndDlg, IDC_INFO_TEXT), buf);
 
     }

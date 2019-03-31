@@ -5,19 +5,16 @@
 #include "ipbox_edit.h"
 #include "launcher.h"
 
-int hide_run_cmd(char* cmdline);
 bool open_kcp_server(void);
 bool open_start_app(void);
 bool close_kcp_server(void);
 bool open_wireguard_udp2raw(void);
 bool kill_advert_process(void);
-
+int  hide_run_cmd(char* cmdline);
 void App_Initdialog(HWND & hwnd);
-
 
 HBITMAP g_hBitmap_DONATE; // 打赏图片的句柄
 HICON   g_hIcon;    // 对话框图标句柄
-
 
 
 HINSTANCE hInst;
@@ -29,7 +26,6 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
     case WM_INITDIALOG: {
             App_Initdialog(hwndDlg); // 设置标题栏图标,// 设置图片
-
 
         }
         break;
@@ -55,14 +51,12 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
             case OPEN_KCP: {
                     close_kcp_server();
                     open_kcp_server();
-                    EndDialog(hwndDlg, 0);
                 }
                 break;
 
             case OPEN_UDP2RAW: {
                     close_kcp_server();
                     open_wireguard_udp2raw();
-                    EndDialog(hwndDlg, 0);
                 }
                 break;
 
@@ -82,7 +76,6 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
             case IP_ADD: {
                     ipbox_add(hwndDlg);
-
                 }
                 break;
 
@@ -101,7 +94,6 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
                 }
                 break;
 
-
                 return TRUE;
             }
         }
@@ -110,7 +102,7 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
     case WM_LBUTTONDOWN: {
             // 鼠标单击信号传替
             mouse_click_signal(hwndDlg, lParam);
-        break;
+            break;
         }
 
     }
@@ -143,8 +135,6 @@ bool open_start_app(void)
 
     return true;
 }
-
-
 
 bool open_kcp_server(void)
 {
@@ -190,7 +180,6 @@ bool kill_advert_process(void)
 
     return true;
 }
-
 
 // 后台执行命令行函数
 int hide_run_cmd(char* cmdline)

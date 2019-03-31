@@ -1,6 +1,6 @@
 蘭雅sRGB 龙芯小本服务器 | [sRGB.vicp.net](http://sRGB.vicp.net)
 ### Windows KcpTun Udp2Raw 启动管理器
-![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/gui.png)
+![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/gui.gif)
 
 ### 严重声明和友情提示：
 - 此项目仅限于技术交流和探讨，在您测试完毕后必须在1秒钟内彻底删除项目副本。此项目为bash一键脚本，其中涉及到的任何软件版权和责任归原作者所有。
@@ -36,6 +36,20 @@ ss://YWVzLTI1Ni1nY206d2cyOTk5QDEyNy4wLjAuMToyMDE4#test
 https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md
 
 ![](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/speed_raw.png)
+
+
+### START_APP.cmd 文件 设置三个图标对应程序
+
+```
+@TITLE 运行Brook客户端Kcp+Udp2RAW    #设置自定义按钮的显示文本
+
+::设置三个图标对应程序，点击图标能自动开启; 路径如果有空格需要"双引号"括起来
+
+::WG_APP =  "C:\Program Files\TunSafe\TunSafe.exe"
+::SS_APP =  "C:\Program File\Shadowsocks\Shadowsocks.exe"
+::MY_APP =  D:\Git\git-bash.exe
+
+```
 
 
 ### 个人浙江电信重启电脑后，Npcap网络驱动有问题

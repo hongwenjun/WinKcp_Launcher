@@ -25,6 +25,7 @@
 				<Option type="0" />
 				<Option compiler="msvc10" />
 				<Compiler>
+					<Add option="/O1" />
 					<Add option="/Ox" />
 					<Add option="/DNDEBUG" />
 				</Compiler>
@@ -40,6 +41,7 @@
 			<Add library="user32" />
 			<Add library="kernel32" />
 			<Add library="comctl32" />
+			<Add library="shell32" />
 			<Add directory="$(#psdk.lib)" />
 		</Linker>
 		<Unit filename="ipbox_edit.cpp" />
