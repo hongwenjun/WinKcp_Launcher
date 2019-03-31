@@ -9,7 +9,7 @@
 
 
 // ip管理窗口
-const long ipbox[] = { IP_TEXT, IP_LIST, IP_ADD, IP_DEL, IP_INFO, IP_SAVE, IP_BOX, IP_LT1, IP_LT2};
+const long ipbox[] = { IP_TEXT, IP_LIST, IP_ADD, IP_DEL, IP_INFO, IP_SAVE, IP_BOX, IP_LT1, IP_LT2 , DEBUG_FLG};
 
 void getnewip(char* newip);
 void open_ipbox(HWND &hwndDlg);

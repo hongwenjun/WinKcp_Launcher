@@ -27,3 +27,4 @@
 #define IP_LT1                                  50007
 #define IP_LT2                                  50008
 #define IDC_INFO_TEXT                           50009
+#define DEBUG_FLG                               50010

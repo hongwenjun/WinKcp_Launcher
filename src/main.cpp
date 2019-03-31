@@ -15,7 +15,7 @@ void App_Initdialog(HWND & hwnd);
 
 HBITMAP g_hBitmap_DONATE; // 打赏图片的句柄
 HICON   g_hIcon;    // 对话框图标句柄
-
+bool debug_flg = false;
 
 HINSTANCE hInst;
 
@@ -23,7 +23,6 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 
     switch (uMsg) {
-
     case WM_INITDIALOG: {
             App_Initdialog(hwndDlg); // 设置标题栏图标,// 设置图片
 
@@ -50,12 +49,24 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
             case OPEN_KCP: {
                     close_kcp_server();
+
+                    if (BST_CHECKED == IsDlgButtonChecked(hwndDlg, DEBUG_FLG))
+                        debug_flg = true;
+                    else
+                        debug_flg = false;
+
                     open_kcp_server();
                 }
                 break;
 
             case OPEN_UDP2RAW: {
                     close_kcp_server();
+
+                    if (BST_CHECKED == IsDlgButtonChecked(hwndDlg, DEBUG_FLG))
+                        debug_flg = true;
+                    else
+                        debug_flg = false;
+
                     open_wireguard_udp2raw();
                 }
                 break;
@@ -193,6 +204,10 @@ int hide_run_cmd(char* cmdline)
     // 后台隐藏
     si.dwFlags   =   STARTF_USESHOWWINDOW;
     si.wShowWindow   =   SW_HIDE;
+
+    if (debug_flg) {
+        si.wShowWindow = SW_SHOW;
+    }
 
     ZeroMemory(&pi, sizeof(pi));
     // Start the child process.

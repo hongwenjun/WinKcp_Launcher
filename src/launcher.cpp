@@ -37,25 +37,29 @@ void mouse_click_signal(HWND &hwndDlg,  LPARAM lParam)
 
             char url[64] = "https://github.com/hongwenjun/WinKcp_Launcher";
             ShellExecuteA(NULL, "open", url, NULL, NULL, SW_SHOW);
+            return ;
         }
-        return ;
+
     }
 
     char buf[512] = {0};
     static int id = 0;
-    if (id >= 9)
+    if (id >= 12)
         id = 0;
     char* tips[] = {"   信息: 点击左边图标，能自动开启对应程序!",
-                    "   信息: 编辑START_APP.cmd 设置三个图标对应程序",
+                    "   信息: 编辑START_APP.cmd设置三个图标对应程序",
                     "   信息: IP 管理功能，添加和删除后，请点保存!",
-                    "   信息: 点击二维码图片，快速访问作者开源项目",
+                    "   信息: 中间箭头IP管理，调试:勾选->显示窗口!",
                     " 1. 需要先安装 pcap 网络驱动包 Wpcap-0.99-r8.exe",
                     " 2. 修改 Windows_KCP.cmd 脚本服务器IP参数",
                     " 3. 使用软件管理 Windows_KCP.cmd 启动关闭",
                     " 4. 电脑WG客户端设置 修改成 Endpoint = 127.0.0.1",
-                    " 5. 手机可以使用 ss+kcp ; KCP插件参数 按脚本提示"
+                    " 5. 手机可以使用 ss+kcp ; KCP插件参数 按脚本提示",
+                    "   信息: 点击二维码图片，快速访问作者开源项目!",
+                    "   信息: 好吧! 点击绿色区域就能关闭程序了!",
+                    "   信息: 如果觉得还行，手机微信打赏5元，记得留言!"
                    };
-    if (abs((int)mouse_pos.x - TIPS_POS.x) < 200) {
+    if (abs((int)mouse_pos.x - TIPS_POS.x) < 150) {
         if (abs((int)mouse_pos.y - TIPS_POS.y) < 30) {
             strcpy(buf, tips[id++]);
             ::SetWindowText(::GetDlgItem(hwndDlg, IDC_INFO_TEXT), buf);
