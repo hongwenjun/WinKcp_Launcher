@@ -1,5 +1,5 @@
 @echo.
-@set PATH=%~dp0;%PATH%
+@set PATH=%~dp0;%~dp0/bin;%PATH%
 
 @set SERVER_IP=1.2.3.4
 @set PORT=1999

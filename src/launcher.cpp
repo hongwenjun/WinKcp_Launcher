@@ -1,6 +1,7 @@
 ﻿#include "launcher.h"
 
 
+// 鼠标点击坐标，对应三个图标的程序,二维码坐标，信息栏坐标
 void mouse_click_signal(HWND &hwndDlg,  LPARAM lParam)
 {
     // 注册图标焦点POS
@@ -16,6 +17,7 @@ void mouse_click_signal(HWND &hwndDlg,  LPARAM lParam)
 
     char app_cmd[256] = {0};
 
+    // 鼠标点击图标，打开对应程序
     if (abs((int)mouse_pos.x - 40) < 30) {
         if (abs((int)mouse_pos.y - WG_POS.y) < 30) {
             read_app_cmd(app_cmd, "::WG_APP");
@@ -32,6 +34,7 @@ void mouse_click_signal(HWND &hwndDlg,  LPARAM lParam)
         }
     }
 
+    // 点击二维码，访问开源主页
     if (abs((int)mouse_pos.x - DONATE_POS.x) < 80) {
         if (abs((int)mouse_pos.y - DONATE_POS.y) < 80) {
 
@@ -42,6 +45,7 @@ void mouse_click_signal(HWND &hwndDlg,  LPARAM lParam)
 
     }
 
+    // 点击信息栏区域，切换信息
     char buf[512] = {0};
     static int id = 0;
     if (id >= 12)
@@ -74,7 +78,7 @@ void mouse_click_signal(HWND &hwndDlg,  LPARAM lParam)
     EndDialog(hwndDlg, 0);
 }
 
-// 读取 START_APP.cmd 中的标题
+// 读取 START_APP.cmd 中对应三个图标的程序路径
 void read_app_cmd(char* app_cmd, const char* value)
 {
     char buf[512] = {0};

@@ -7,7 +7,7 @@
 ::MY_APP =  "D:\Git\git-bash.exe"
 
 @echo.
-@set PATH=%~dp0;%PATH%
+@set PATH=%~dp0;%~dp0/bin;%PATH%
 ::  两个冒号是注释，删除命令行首开启命令
 
 ::  BROOK + KcpTun + Udp2Raw 客户端接口配置

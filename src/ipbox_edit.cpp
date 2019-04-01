@@ -131,6 +131,7 @@ void read_appname(HWND &hwndDlg)
     }
 }
 
+// IP管理表框，判断鼠标单击或双击
 void ipbox_list_signal(HWND &hwndDlg, int wmEvent)
 {
 

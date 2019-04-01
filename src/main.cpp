@@ -14,8 +14,8 @@ int  hide_run_cmd(char* cmdline);
 void App_Initdialog(HWND & hwnd);
 
 HBITMAP g_hBitmap_DONATE; // 打赏图片的句柄
-HICON   g_hIcon;    // 对话框图标句柄
-bool debug_flg = false;
+HICON   g_hIcon;          // 对话框图标句柄
+bool debug_flg = false;   // 调试:勾选->显示窗口
 
 HINSTANCE hInst;
 
