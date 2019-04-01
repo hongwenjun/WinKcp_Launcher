@@ -9,6 +9,9 @@
 ### 使用 bash wgmtu 配置好服务器段后的服务示例
 ![](https://raw.githubusercontent.com/hongwenjun/img/master/ss_wg.png)
 
+### VirSCAN.org 一个非盈利性的免费病毒检测网站，47款杀毒引擎检测安全
+  http://r.virscan.org/language/zh-cn/report/cb999c7af6cf3dec98f9b9ccd48e8dc1
+
 ### 使用说明:
 1. 需要先安装 pcap 网络驱动包(Wpcap-0.99-r8.exe 或者 WinPcap_4_1_3.exe 两者选一个)
 2. 修改 [Windows_KCP.cmd 和 Windows_UDP2RAW.cmd 服务器IP参数](https://github.com/hongwenjun/WinKcp_Launcher/tree/master/template)，双击启动调试
@@ -53,7 +56,7 @@ https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md
 
 
 ### 个人浙江电信重启电脑后，Npcap网络驱动有问题
--可以 重启网卡（Npcap Loopback Adapter）或 再装npcap-0.99-r8.exe 解决
+- 可以 重启网卡（Npcap Loopback Adapter）或 再装npcap-0.99-r8.exe 解决
 ```
 :: 重启网卡（Npcap Loopback Adapter）
 netsh interface set interface "Npcap Loopback Adapter" disabled
