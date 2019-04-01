@@ -12,6 +12,7 @@ bool open_wireguard_udp2raw(void);
 bool kill_advert_process(void);
 int  hide_run_cmd(char* cmdline);
 void App_Initdialog(HWND & hwnd);
+void feedback_info(HWND & hwndDlg, int BTN_ID);
 
 HBITMAP g_hBitmap_DONATE; // 打赏图片的句柄
 HICON   g_hIcon;          // 对话框图标句柄
@@ -56,6 +57,7 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
                         debug_flg = false;
 
                     open_kcp_server();
+                    feedback_info(hwndDlg, OPEN_KCP);
                 }
                 break;
 
@@ -68,6 +70,7 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
                         debug_flg = false;
 
                     open_wireguard_udp2raw();
+                    feedback_info(hwndDlg, OPEN_UDP2RAW);
                 }
                 break;
 
@@ -133,7 +136,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     return DialogBox(hInst, MAKEINTRESOURCE(DLG_MAIN), NULL, (DLGPROC)DlgMain);
 }
 
-
+void feedback_info(HWND & hwndDlg, int BTN_ID)
+{
+    SetWindowText(::GetDlgItem(hwndDlg, BTN_ID), "【。。加速服务正在运行中。。】");
+    SetWindowText(::GetDlgItem(hwndDlg, IDC_INFO_TEXT), "【服务运行中-->三图标启动程序-->点绿色区域关闭】");
+}
 bool open_start_app(void)
 {
     char newip[128] = {0};
