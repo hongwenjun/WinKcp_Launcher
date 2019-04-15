@@ -44,16 +44,16 @@ udp2raw_install()
     rm version.txt
 
     # 下载 KCPTUN
-    kcptun_tar_gz=kcptun-linux-amd64-20190109.tar.gz
-    wget https://github.com/xtaci/kcptun/releases/download/v20190109/$kcptun_tar_gz
+    kcptun_tar_gz=kcptun-linux-amd64-20190409.tar.gz
+    wget https://github.com/xtaci/kcptun/releases/download/v20190409/$kcptun_tar_gz
     tar xf $kcptun_tar_gz
     mv server_linux_amd64 /usr/bin/kcp-server
     rm $kcptun_tar_gz
     rm client_linux_amd64
 
     # 下载 UDPspeeder
-    wget https://github.com/wangyu-/UDPspeeder/releases/download/20180806.0/speederv2_linux.tar.gz
-    tar xf speederv2_linux.tar.gz
+    wget https://github.com/wangyu-/UDPspeeder/releases/download/20190121.0/speederv2_binaries.tar.gz
+    tar xf speederv2_binaries.tar.gz
     mv speederv2_amd64 /usr/bin/speederv2
     rm speederv2* -rf
     rm version.txt
