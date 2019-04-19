@@ -1,4 +1,5 @@
-蘭雅sRGB 龙芯小本服务器 | [sRGB.vicp.net](http://sRGB.vicp.net)
+- 蘭雅sRGB 龙芯小本服务器 | [sRGB.vicp.net](http://sRGB.vicp.net)
+- [蘭雅sRGB YouTube频道](https://www.youtube.com/channel/UCupRwki_4n87nrwP0GIBUXA/videos)
 ### Windows KcpTun Udp2Raw 启动管理器
 ![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/gui.gif)
 
@@ -33,6 +34,8 @@ ss://YWVzLTI1Ni1nY206d2cyOTk5QDEyNy4wLjAuMToyMDE4#test
 
   KCPTUN端口: 4000 ; KCP插件设置参数 mode=fast2;key=wg2999;mtu=1300
 ```
+### 手机使用参考  《OpenWRT 安装 WireGuard 配置 Udp2Raw + UdpSpeeder + WireGuard 文档教程》
+- 短网址: https://git.io/wrt.wg
 
 
 ### 参数参考  udp2raw+kcptun 加速tcp流量 Step by Step 教程
