@@ -1,6 +1,6 @@
 - 蘭雅sRGB 龙芯小本服务器 | [sRGB.vicp.net](http://sRGB.vicp.net)
-- [蘭雅sRGB YouTube频道](https://www.youtube.com/channel/UCupRwki_4n87nrwP0GIBUXA/videos)
-### Windows KcpTun Udp2Raw 启动管理器
+- [蘭雅sRGB![](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/youtube.png)频道](https://www.youtube.com/channel/UCupRwki_4n87nrwP0GIBUXA/videos) &nbsp;&nbsp;&nbsp;可以观看相关脚本工具的演示视频!
+### Windows KcpTun Udp2Raw 启动管理器  [下载](https://github.com/hongwenjun/WinKcp_Launcher/archive/master.zip)
 ![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/gui.gif)
 
 ### 严重声明和友情提示：
@@ -14,7 +14,7 @@
   http://r.virscan.org/language/zh-cn/report/cb999c7af6cf3dec98f9b9ccd48e8dc1
 
 ### 使用说明:
-1. 需要先安装 pcap 网络驱动包(Wpcap-0.99-r8.exe 或者 WinPcap_4_1_3.exe 两者选一个)
+1. 需要先安装 pcap 网络驱动包,可选 [Wpcap-0.994.exe](https://nmap.org/npcap/) 或 [WinPcap_4_1_3.exe](https://www.winpcap.org/install/)
 2. 修改 [Windows_KCP.cmd 和 Windows_UDP2RAW.cmd 服务器IP参数](https://github.com/hongwenjun/WinKcp_Launcher/tree/master/template)，双击启动调试
 3. 双击 WinKcp_Launcher 分别管理  Windows_KCP.cmd 和 Windows_UDP2RAW.cm 启动关闭
 4. 电脑$$客户端设置  导入下面的模版配置，再修改成实际密码
@@ -58,8 +58,8 @@ https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md
 ```
 
 
-### 个人浙江电信重启电脑后，Npcap网络驱动有问题
-- 可以 重启网卡（Npcap Loopback Adapter）或 再装npcap-0.99-r8.exe 解决
+### 个人浙江电信重启电脑后，Npcap网络驱动有问题(brook方案)
+- 可以 重启网卡（Npcap Loopback Adapter）或 再装npcap-0.994.exe 解决
 ```
 :: 重启网卡（Npcap Loopback Adapter）
 netsh interface set interface "Npcap Loopback Adapter" disabled
