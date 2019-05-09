@@ -10,11 +10,11 @@
 ### 使用 bash wgmtu 配置好服务器段后的服务示例
 ![](https://raw.githubusercontent.com/hongwenjun/img/master/ss_wg.png)
 
-### VirSCAN.org 一个非盈利性的免费病毒检测网站，47款杀毒引擎检测安全
+### VirSCAN.org 一个非盈利性的免费病毒检测网站，49款杀毒引擎检测安全
   http://r.virscan.org/language/zh-cn/report/cb999c7af6cf3dec98f9b9ccd48e8dc1
 
 ### 使用说明:
-1. 需要先安装 pcap 网络驱动包,可选 [Wpcap-0.994.exe](https://nmap.org/npcap/) 或 [WinPcap_4_1_3.exe](https://www.winpcap.org/install/)
+1. 需要先安装 pcap 网络驱动包,可选 [Wpcap-0.994.exe](https://nmap.org/npcap/) 或者 [WinPcap_4_1_3.exe](https://www.winpcap.org/install/)
 2. 修改 [Windows_KCP.cmd 和 Windows_UDP2RAW.cmd 服务器IP参数](https://github.com/hongwenjun/WinKcp_Launcher/tree/master/template)，双击启动调试
 3. 双击 WinKcp_Launcher 分别管理  Windows_KCP.cmd 和 Windows_UDP2RAW.cm 启动关闭
 4. 电脑$$客户端设置  导入下面的模版配置，再修改成实际密码
@@ -34,7 +34,7 @@ ss://YWVzLTI1Ni1nY206d2cyOTk5QDEyNy4wLjAuMToyMDE4#test
 
   KCPTUN端口: 4000 ; KCP插件设置参数 mode=fast2;key=wg2999;mtu=1300
 ```
-### 手机使用参考  《OpenWRT 安装 WireGuard 配置 Udp2Raw + UdpSpeeder + WireGuard 文档教程》
+### 软路由 使用参考  《OpenWRT 安装 WireGuard 配置 Udp2Raw + UdpSpeeder + WireGuard 文档教程》
 - 短网址: https://git.io/wrt.wg
 
 
