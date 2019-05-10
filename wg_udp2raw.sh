@@ -43,9 +43,12 @@ udp2raw_install()
     rm udp2raw* -rf
     rm version.txt
 
-    # 下载 KCPTUN
-    kcptun_tar_gz=kcptun-linux-amd64-20190418.tar.gz
-    wget https://github.com/xtaci/kcptun/releases/download/v20190418/$kcptun_tar_gz
+    # 下载最新 KCPTUN
+    kcp_ver=$(wget --no-check-certificate -qO- https://api.github.com/repos/xtaci/kcptun/releases/latest | grep 'tag_name' | cut -d\" -f4)
+    kcp_gz_ver=${kcp_ver:1:8}
+
+    kcptun_tar_gz=kcptun-linux-amd64-${kcp_gz_ver}.tar.gz
+    wget https://github.com/xtaci/kcptun/releases/download/${kcp_ver}/$kcptun_tar_gz
     tar xf $kcptun_tar_gz
     mv server_linux_amd64 /usr/bin/kcp-server
     rm $kcptun_tar_gz
@@ -88,13 +91,13 @@ EOF
 systemctl stop rc-local
 
 # 简化判断系统 debian/centos 族群
-if [ -e '/etc/redhat-release' ]; then 
+if [ -e '/etc/redhat-release' ]; then
     mv /etc/rc.local /etc/rc.d/rc.local
     ln -s /etc/rc.d/rc.local /etc/rc.local
     chmod +x /etc/rc.d/rc.local
     systemctl enable rc-local
 else
-    chmod +x /etc/rc.local	
+    chmod +x /etc/rc.local
 fi
 
 systemctl restart rc-local
