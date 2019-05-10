@@ -12,7 +12,7 @@ ss_raw_port=1999
 kcp_port=4000
 
 if [ ! -e '/var/ip_addr' ]; then
-	echo -n $(curl -4 ip.sb) > /var/ip_addr
+    echo -n $(curl -4 ip.sb) > /var/ip_addr
 fi
 serverip=$(cat /var/ip_addr)
 
@@ -27,7 +27,7 @@ echo -e "${SkyBlue}             开源项目：https://github.com/hongwenjun/vps
 echo -e "请访问 ${GreenBG}https://github.com/hongwenjun/WinKcp_Launcher${Font} 下载客户端程序和模版"
 echo -e "随机生成密码: ${RedBG} ${passwd} ${Font} 现在可修改; 端口参数为了简单好用，熟悉脚本自行修改"
 
-read -p "请输入你要的密码(按回车不修改): "  new
+read -p "请输入你要的密码(按回车不修改): " -t 30 new
 
 if [[ ! -z "${new}" ]]; then
     passwd="${new}"
@@ -78,16 +78,15 @@ cat <<EOF >/etc/rc.local
 # SS + KcpTun + Udp2RAW  or (SSR BROOK)
 ss-server -s 0.0.0.0 -p 40000 -k ${passwd} -m aes-256-gcm -t 300 >> /var/log/ss-server.log &
 kcp-server -t "127.0.0.1:40000" -l ":${kcp_port}" --key ${passwd} -mode fast2 -mtu 1300  >> /var/log/kcp-server.log &
-udp2raw -s -l0.0.0.0:${ss_raw_port} -r 127.0.0.1:${kcp_port} -k ${passwd} --raw-mode faketcp  >> /var/log/udp2raw.log &
+udp2raw -s -l0.0.0.0:${ss_raw_port} -r 127.0.0.1:${kcp_port} -k ${passwd} --raw-mode faketcp -a >> /var/log/udp2raw.log &
 
 # WG + Speeder + Udp2RAW  or (V2ray udp)
 speederv2 -s -l127.0.0.1:${speed_port}  -r127.0.0.1:${wg_port}  -f20:10 -k ${passwd} --mode 0  >> /var/log/speederv2.log &
-udp2raw   -s -l0.0.0.0:${raw_port}  -r 127.0.0.1:${speed_port}  -k ${passwd} --raw-mode faketcp  >> /var/log/wg_udp2raw.log &
+udp2raw   -s -l0.0.0.0:${raw_port}  -r 127.0.0.1:${speed_port}  -k ${passwd} --raw-mode faketcp -a >> /var/log/wg_udp2raw.log &
 
 exit 0
 
 EOF
-
 
 # 重启启动项服务
 systemctl stop rc-local
