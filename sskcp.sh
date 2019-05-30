@@ -39,7 +39,19 @@ status(){
 
 setconf()
 {
-	echo "功能等待添加中..."
+    echo -e "\033[0;36m:: 脚本 sskcp.sh 记录参数，不修改请按(Ctrl+C)退出!\033[0;33m"
+    head -n 6 sskcp.sh | tail -n 4  &&  echo -e "\033[0;36m"
+
+    read -p ":: 1.请输入远程服务器IP: "  sv_ip
+    read -p ":: 2.请输入udp2raw 端口: "  port
+    read -p ":: 3.请输入套接转发密码: "  passwd
+    read -p ":: 4.请输入 SS 服务端口: "  ss_port
+
+    sed -i "s/^SERVER_IP=.*/SERVER_IP=${sv_ip}/g"  "sskcp.sh"
+    sed -i "s/^PORT=.*/PORT=${port}/g"  "sskcp.sh"
+    sed -i "s/^PASSWORD=.*/PASSWORD=${passwd}/g"  "sskcp.sh"
+    sed -i "s/^SS_PORT=.*/SS_PORT=${ss_port}/g"  "sskcp.sh"
+    echo -e "\033[0;33m" && head -n 6 sskcp.sh | tail -n 4
 }
 
 if [[ $# > 0 ]]; then
