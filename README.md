@@ -34,9 +34,14 @@ ss://YWVzLTI1Ni1nY206d2cyOTk5QDEyNy4wLjAuMToyMDE4#test
 
   KCPTUN端口: 4000 ; KCP插件设置参数 mode=fast2;key=wg2999;mtu=1300
 ```
-### 软路由 使用参考  《OpenWRT 安装 WireGuard 配置 Udp2Raw + UdpSpeeder + WireGuard 文档教程》
-- 短网址: https://git.io/wrt.wg
 
+### OpenWRT和KoolShar使用 加速udp2raw+kcptun脚本 https://git.io/sskcp.sh
+- KcpTun [软件下载](https://github.com/xtaci/kcptun/releases) client_linux 改名成 kcp-client 存放路径 /usr/bin
+- KoolShare LEDE X64 可以酷软装udp2raw和kcptun，再做个软链接
+	ln -s /koolshare/bin/kcpclient /usr/bin/kcp-client
+
+### 软路由参考 《OpenWRT 安装 WireGuard 配置 Udp2Raw + UdpSpeeder + WireGuard 文档教程》
+- 短网址: https://git.io/wrt.wg
 
 ### 参数参考  udp2raw+kcptun 加速tcp流量 Step by Step 教程
 https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md

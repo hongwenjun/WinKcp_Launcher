@@ -28,19 +28,19 @@ restart(){
 }
 
 help(){
-    echo -e "\033[0;36m:: Usage \033[42;37m bash sskcp.sh \033[0;33m [start | stop | restart | set] \033[0m"
+    echo -e "${SkyBlue}:: Source: ${Green}https://git.io/sskcp.sh  ${Font}By 蘭雅sRGB"
+    echo -e "${SkyBlue}:: Usage: ${GreenBG} bash sskcp.sh ${Yellow} [start | stop | restart | set] ${Font}"
 }
 
 status(){
-    clear
-    ps ax | grep --color=auto  -e udp2raw -e kcp-client -e ss-local
+    $PS | grep --color=auto  -e udp2raw -e kcp-client -e ss-local
     echo
 }
 
 setconf()
 {
-    echo -e "\033[0;36m:: 脚本 sskcp.sh 记录参数，不修改请按(Ctrl+C)退出!\033[0;33m"
-    head -n 6 sskcp.sh | tail -n 4  &&  echo -e "\033[0;36m"
+    echo -e "${SkyBlue}:: 脚本 sskcp.sh 记录参数，如不修改请按(Ctrl+C)退出! ${Yellow}"
+    head -n 6 sskcp.sh | tail -n 4  &&  echo -e "${SkyBlue}"
 
     read -p ":: 1.请输入远程服务器IP: "  sv_ip
     read -p ":: 2.请输入udp2raw 端口: "  port
@@ -51,9 +51,21 @@ setconf()
     sed -i "s/^PORT=.*/PORT=${port}/g"  "sskcp.sh"
     sed -i "s/^PASSWORD=.*/PASSWORD=${passwd}/g"  "sskcp.sh"
     sed -i "s/^SS_PORT=.*/SS_PORT=${ss_port}/g"  "sskcp.sh"
-    echo -e "\033[0;33m" && head -n 6 sskcp.sh | tail -n 4
+    echo -e "${Yellow}" && head -n 6 sskcp.sh | tail -n 4 &&  echo -e "${Font}" 
 }
 
+system_def(){
+    PS='ps ax'
+    if [[ -e /etc/openwrt_release ]]; then
+       PS='ps'
+    fi
+    # 定义文字颜色
+	Green="\033[32m"  && Red="\033[31m" && GreenBG="\033[42;37m" && RedBG="\033[41;37m"
+	Font="\033[0m"  && Yellow="\033[0;33m" && SkyBlue="\033[0;36m"
+}
+
+# 系统定义和命令参数
+system_def
 if [[ $# > 0 ]]; then
     key="$1"
     case $key in
@@ -68,6 +80,7 @@ if [[ $# > 0 ]]; then
         ;;
         set)
           setconf
+          restart
     esac
 else
     status
