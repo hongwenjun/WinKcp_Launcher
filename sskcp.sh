@@ -29,17 +29,21 @@ restart(){
 
 help(){
     echo -e "${SkyBlue}:: Source: ${Green}https://git.io/sskcp.sh  ${Font}By 蘭雅sRGB"
-    echo -e "${SkyBlue}:: Usage: ${GreenBG} bash sskcp.sh ${Yellow} [start | stop | restart | set] ${Font}"
+    echo -e "${SkyBlue}:: Usage: ${GreenBG} bash sskcp.sh ${Yellow} [start|stop|restart|set] ${Font}"
 }
 
 status(){
-    $PS | grep --color=auto  -e udp2raw -e kcp-client -e ss-local
+    if [[ -e /etc/openwrt_release ]]; then
+       ps | grep  -e udp2raw -e kcp-client -e ss-local
+    else
+       ps ax | grep --color=auto -e udp2raw -e kcp-client -e ss-local
+    fi
     echo
 }
 
 setconf()
 {
-    echo -e "${SkyBlue}:: 脚本 sskcp.sh 记录参数，如不修改请按(Ctrl+C)退出! ${Yellow}"
+    echo -e "${SkyBlue}:: 修改脚本sskcp.sh记录参数，按${RedBG}<Enter>${SkyBlue}不修改! ${Yellow}"
     head -n 6 sskcp.sh | tail -n 4  &&  echo -e "${SkyBlue}"
 
     read -p ":: 1.请输入远程服务器IP: "  sv_ip
@@ -47,24 +51,28 @@ setconf()
     read -p ":: 3.请输入套接转发密码: "  passwd
     read -p ":: 4.请输入 SS 服务端口: "  ss_port
 
-    sed -i "s/^SERVER_IP=.*/SERVER_IP=${sv_ip}/g"  "sskcp.sh"
-    sed -i "s/^PORT=.*/PORT=${port}/g"  "sskcp.sh"
-    sed -i "s/^PASSWORD=.*/PASSWORD=${passwd}/g"  "sskcp.sh"
-    sed -i "s/^SS_PORT=.*/SS_PORT=${ss_port}/g"  "sskcp.sh"
-    echo -e "${Yellow}" && head -n 6 sskcp.sh | tail -n 4 &&  echo -e "${Font}" 
+    if [[ ! -z "${sv_ip}" ]]; then
+        sed -i "s/^SERVER_IP=.*/SERVER_IP=${sv_ip}/g"  "sskcp.sh"
+    fi
+    if [[ ! -z "${port}" ]]; then
+        sed -i "s/^PORT=.*/PORT=${port}/g"  "sskcp.sh"
+    fi
+    if [[ ! -z "${passwd}" ]]; then
+        sed -i "s/^PASSWORD=.*/PASSWORD=${passwd}/g"  "sskcp.sh"
+    fi
+    if [[ ! -z "${ss_port}" ]]; then
+        sed -i "s/^SS_PORT=.*/SS_PORT=${ss_port}/g"  "sskcp.sh"
+    fi
+
+    echo -e "${Yellow}" && head -n 6 sskcp.sh | tail -n 4 &&  echo -e "${Font}"
 }
 
 system_def(){
-    PS='ps ax'
-    if [[ -e /etc/openwrt_release ]]; then
-       PS='ps'
-    fi
-    # 定义文字颜色
 	Green="\033[32m"  && Red="\033[31m" && GreenBG="\033[42;37m" && RedBG="\033[41;37m"
 	Font="\033[0m"  && Yellow="\033[0;33m" && SkyBlue="\033[0;36m"
 }
 
-# 系统定义和命令参数
+# 脚本命令参数
 system_def
 if [[ $# > 0 ]]; then
     key="$1"
@@ -80,9 +88,9 @@ if [[ $# > 0 ]]; then
         ;;
         set)
           setconf
-          restart
+        ;;
     esac
 else
     status
-    help
 fi
+help

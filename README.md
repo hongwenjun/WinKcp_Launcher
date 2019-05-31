@@ -38,7 +38,8 @@ ss://YWVzLTI1Ni1nY206d2cyOTk5QDEyNy4wLjAuMToyMDE4#test
 ### OpenWRT和KoolShar使用 加速udp2raw+kcptun脚本 https://git.io/sskcp.sh
 - KcpTun [软件下载](https://github.com/xtaci/kcptun/releases) client_linux 改名成 kcp-client 存放路径 /usr/bin
 - KoolShare LEDE X64 可以酷软装udp2raw和kcptun，再做个软链接
-	ln -s /koolshare/bin/kcpclient /usr/bin/kcp-client
+
+    ln -s /koolshare/bin/kcpclient /usr/bin/kcp-client
 
 ### 软路由参考 《OpenWRT 安装 WireGuard 配置 Udp2Raw + UdpSpeeder + WireGuard 文档教程》
 - 短网址: https://git.io/wrt.wg
