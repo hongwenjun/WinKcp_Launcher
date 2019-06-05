@@ -1,11 +1,17 @@
 # WireGuard + Speeder + Udp2Raw 和 Shadowsocks + Kcp + Udp2RAW 一键脚本
-### 请访问 https://github.com/hongwenjun/WinKcp_Launcher 下载客户端程序和模版
+### 请访问 https://git.io/winkcp 下载客户端程序和模版
 
 ### OpenWRT 安装 WireGuard 配置 Udp2Raw + UdpSpeeder + WireGuard 文档教程
 - 短网址: https://git.io/wrt.wg  [蘭雅sRGB YouTube频道](https://www.youtube.com/channel/UCupRwki_4n87nrwP0GIBUXA/videos)
 
+### OpenWRT和KoolShar使用 加速udp2raw+kcptun脚本 https://git.io/sskcp.sh
+
 ### TunSafe 导入客户配置连接后，浏览器访问  http://10.0.0.1  或者  http://ip111.cn/
 可以访问或者检测出你当前IP地址，表示软件设置没问题，*测试服务器只测试连接，不提供翻墙服务*
+
+### WireGuard是VPN协议，如果连上而没有回程流量，请使用 WG+SS 分流方案
+- 客户端配置 AllowedIPs = 0.0.0.0/0, ::0/0 改成 AllowedIPs = 10.0.0.1/32
+- WG服务器相当于一个远程路由器，IP: 10.0.0.1,再开启一个SS，IP填 IP: 10.0.0.1
 
 ### cat /etc/wireguard/wg_VM-0-13-debian_3.conf   WireGuard直连配置
 ```

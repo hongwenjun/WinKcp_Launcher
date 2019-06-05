@@ -24,7 +24,7 @@ Font="\033[0m"  && Yellow="\033[0;33m" && SkyBlue="\033[0;36m"
 
 echo -e "${RedBG}   WireGuard + Speeder + Udp2Raw 和 Shadowsocks + Kcp + Udp2RAW 一键脚本   ${Font}"
 echo -e "${SkyBlue}             开源项目：https://github.com/hongwenjun/vps_setup             ${Font}"
-echo -e "请访问 ${GreenBG}https://github.com/hongwenjun/WinKcp_Launcher${Font} 下载客户端程序和模版"
+echo -e "请访问 ${GreenBG} https://git.io/winkcp ${Font} 下载客户端程序和模版"
 echo -e "随机生成密码: ${RedBG} ${passwd} ${Font} 现在可修改; 端口参数为了简单好用，熟悉脚本自行修改"
 
 read -p "请输入你要的密码(按回车不修改): " -t 30 new
@@ -107,7 +107,7 @@ put_config(){
     echo -e "${SkyBlue}:: WG+Speeder+Udp2Raw 和 SS+Kcp+Udp2RAW 配置信息, 再查${GreenBG} cat vps_setup.log ${Font}"
     cat /etc/rc.local
 
-    echo -e "请访问 ${GreenBG}https://github.com/hongwenjun/WinKcp_Launcher${Font} 下载客户端程序和模版"
+    echo -e "请访问${GreenBG} https://git.io/winkcp ${Font}下载Windows客户端;${GreenBG} https://git.io/sskcp.sh ${Font}OpenWRT或KoolShar脚本"
     echo -e "按以下实际信息填充   ${RedBG} 服务器IP: ${serverip} ${Font} "
     echo -e "${Yellow}  WG+SPEED+UDP2RAW 原端口: ${wg_port} ;  UDP2RAW伪装TCP后端口: ${raw_port} ; 转发密码: ${passwd} ${Font}"
     echo -e "${Red}  SS+KCP+UDP2RAW加速: UDP2RAW伪装TCP后端口: ${ss_raw_port} ; SS密码: ${passwd} 加密协议 aes-256-gcm ${Font}"
