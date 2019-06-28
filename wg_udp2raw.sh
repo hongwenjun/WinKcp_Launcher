@@ -22,16 +22,40 @@ clear
 Green="\033[32m"  && Red="\033[31m" && GreenBG="\033[42;37m" && RedBG="\033[41;37m"
 Font="\033[0m"  && Yellow="\033[0;33m" && SkyBlue="\033[0;36m"
 
-echo -e "${RedBG}   WireGuard + Speeder + Udp2Raw 和 Shadowsocks + Kcp + Udp2RAW 一键脚本   ${Font}"
-echo -e "${SkyBlue}             开源项目：https://github.com/hongwenjun/vps_setup             ${Font}"
-echo -e "请访问 ${GreenBG} https://git.io/winkcp ${Font} 下载客户端程序和模版"
-echo -e "随机生成密码: ${RedBG} ${passwd} ${Font} 现在可修改; 端口参数为了简单好用，熟悉脚本自行修改"
+default_display()
+{
+    echo -e "${GreenBG}   WireGuard + Speeder + Udp2Raw 和 Shadowsocks + Kcp + Udp2RAW 一键脚本   ${Font}"
+    echo -e "${SkyBlue}             开源项目: https://github.com/hongwenjun/vps_setup             ${Font}"
+    echo -e "随机生成密码: ${RedBG} ${passwd} ${Font} 现在可修改; 端口参数为了简单好用，熟悉脚本自行修改"
 
-read -p "请输入你要的密码(按回车不修改): " -t 30 new
+    read -p "请输入你要的密码(按回车不修改): " -t 30 new
 
-if [[ ! -z "${new}" ]]; then
-    passwd="${new}"
-    echo -e "修改密码: ${GreenBG} ${passwd} ${Font}"
+    if [[ ! -z "${new}" ]]; then
+        passwd="${new}"
+        echo -e "修改密码: ${GreenBG} ${passwd} ${Font}"
+    fi
+}
+
+english_display()
+{
+    echo -e "${GreenBG}   WireGuard+Speeder+Udp2Raw and SS+Kcp+Udp2RAW Automated Configuration   ${Font}"
+    echo -e "${SkyBlue}       Open Source Project: https://github.com/hongwenjun/vps_setup       ${Font}"
+
+    echo -e "Random Password: ${RedBG} ${passwd} ${Font} Now, You can change the Password, Press Enter to not Modify:"
+
+    read -p "Please Enter the New Password: " -t 30 new
+
+    if [[ ! -z "${new}" ]]; then
+        passwd="${new}"
+        echo -e "New Password: ${GreenBG} ${passwd} ${Font}"
+    fi
+}
+
+# 中英文显示支持
+if [[ "$1" == "english" ]]; then
+    english_display
+else
+    default_display
 fi
 
 udp2raw_install()
@@ -107,7 +131,7 @@ put_config(){
     echo -e "${SkyBlue}:: WG+Speeder+Udp2Raw 和 SS+Kcp+Udp2RAW 配置信息, 再查${GreenBG} cat vps_setup.log ${Font}"
     cat /etc/rc.local
 
-    echo -e "请访问${GreenBG} https://git.io/winkcp ${Font}下载Windows客户端;${GreenBG} https://git.io/sskcp.sh ${Font}OpenWRT或KoolShar脚本"
+    echo -e "请访问${GreenBG} https://git.io/winkcp ${Font}下载 Windows KcpTun 和 Udp2RAW 套接桥接工具"
     echo -e "按以下实际信息填充   ${RedBG} 服务器IP: ${serverip} ${Font} "
     echo -e "${Yellow}  WG+SPEED+UDP2RAW 原端口: ${wg_port} ;  UDP2RAW伪装TCP后端口: ${raw_port} ; 转发密码: ${passwd} ${Font}"
     echo -e "${Red}  SS+KCP+UDP2RAW加速: UDP2RAW伪装TCP后端口: ${ss_raw_port} ; SS密码: ${passwd} 加密协议 aes-256-gcm ${Font}"
@@ -116,5 +140,24 @@ put_config(){
     echo -e "${SkyBlue}             开源项目：https://github.com/hongwenjun/vps_setup              ${Font}"
 }
 
+put_english_config(){
+    echo -e "${SkyBlue}:: WG+Speeder+Udp2Raw and SS+Kcp+Udp2RAW Configuration information. ${Font}"
+    cat /etc/rc.local
+
+    echo -e "Please visit ${GreenBG} https://git.io/winkcp ${Font} to download the Windows KcpTun and Udp2RAW Socket Bridge tools."
+    echo -e "Display Information ${RedBG} Server IP: ${serverip} ${Font} "
+    echo -e "${Yellow}  WG+SPEED+UDP2RAW Original Port: ${wg_port} ;  UDP2RAW Camouflage TCP Port: ${raw_port} ; Forward Password: ${passwd} ${Font}"
+    echo -e "${Red}  SS+KCP+UDP2RAW Speeded-Up: UDP2RAW Camouflage TCP Port: ${ss_raw_port} ; SS_Password: ${passwd} Encrypt_Method: aes-256-gcm ${Font}"
+    echo -e "${Green}  Mobile Phone SS+KCP Speeded-Up: KCPTUN Port: ${kcp_port} ; KCP Plugin Parameters: mode=fast2;key=${passwd};mtu=1300  ${Font}"
+    echo
+    echo -e "${SkyBlue}       Open Source Project: https://github.com/hongwenjun/vps_setup       ${Font}"
+}
+
 cur_dir=$(pwd) && clear
-put_config 2>&1 | tee ${cur_dir}/vps_setup.log
+
+if [[ "$1" == "english" ]]; then
+    put_english_config 2>&1 | tee ${cur_dir}/vps_setup.log
+else
+    put_config 2>&1 | tee ${cur_dir}/vps_setup.log
+fi
+
