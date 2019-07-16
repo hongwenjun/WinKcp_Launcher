@@ -8,7 +8,7 @@ SS_PORT=40000
 start(){
   # SS + KcpTun + Udp2RAW
     udp2raw -c -r$SERVER_IP:$PORT -l0.0.0.0:4000 -k $PASSWORD --raw-mode  faketcp -a >> /var/log/udp2raw.log &
-    kcp-client -r 127.0.0.1:4000 -l :$SS_PORT --key $PASSWORD -mode fast2 -mtu 1300  >> /var/log/kcp-client.log &
+    kcp-client -r 127.0.0.1:4000 -l :$SS_PORT --key $PASSWORD -mode fast2 -mtu 1300  >> /var/log/kcp-client.log  2>&1 &
 
   # ss-local -s 服务器IP地址  -p 服务器端口  -b 绑定本地IP  -l 本地端口  -k 密码  -m 加密方式 [-c 配置文件]
     ss-local -s 127.0.0.1 -p $SS_PORT -b 0.0.0.0 -l 1080 -k $PASSWORD -m aes-256-gcm  -t 300 >> /var/log/ss-local.log &
@@ -30,9 +30,16 @@ restart(){
 help(){
     echo -e "${SkyBlue}:: Source: ${Green}https://git.io/sskcp.sh  ${Font}By 蘭雅sRGB"
     echo -e "${SkyBlue}:: Usage: ${GreenBG} bash sskcp.sh ${Yellow} [start|stop|restart|set] ${Font}"
+    echo
 }
 
 status(){
+    # log 和 命令行参数
+    cat /var/log/udp2raw.log | tail
+    cat /var/log/kcp-client.log | tail
+    cat /var/log/ss-local.log | tail
+    echo
+
     if [[ -e /etc/openwrt_release ]]; then
        ps | grep  -e udp2raw -e kcp-client -e ss-local
     else
