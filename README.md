@@ -1,4 +1,3 @@
-- 蘭雅sRGB 龙芯小本服务器 | [sRGB.vicp.net](http://sRGB.vicp.net)
 - [蘭雅sRGB![](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/youtube.png)频道](https://www.youtube.com/channel/UCupRwki_4n87nrwP0GIBUXA/videos) &nbsp;&nbsp;&nbsp;可以观看相关脚本工具的演示视频!
 ### Windows KcpTun Udp2Raw 启动管理器  [下载](https://github.com/hongwenjun/WinKcp_Launcher/archive/master.zip)
 ![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/gui.gif)
@@ -11,12 +10,12 @@
 ![](https://raw.githubusercontent.com/hongwenjun/img/master/ss_wg.png)
 
 ### VirSCAN.org 一个非盈利性的免费病毒检测网站，49款杀毒引擎检测安全
-  http://r.virscan.org/language/zh-cn/report/cb999c7af6cf3dec98f9b9ccd48e8dc1
+  http://r.virscan.org/language/zh-cn/report/9212f801e9cfef20e4ad1bc07aea562e
 
 ### 使用说明:
-1. 需要先安装 pcap 网络驱动包,可选 [Wpcap-0.994.exe](https://nmap.org/npcap/) 或者 [WinPcap_4_1_3.exe](https://www.winpcap.org/install/)
+1. 需要先安装 pcap 网络驱动包, 安装 [npcap-0.9983.exe](https://nmap.org/npcap/)
 2. 修改 [Windows_KCP.cmd 和 Windows_UDP2RAW.cmd 服务器IP参数](https://github.com/hongwenjun/WinKcp_Launcher/tree/master/template)，双击启动调试
-3. 双击 WinKcp_Launcher 分别管理  Windows_KCP.cmd 和 Windows_UDP2RAW.cm 启动关闭
+3. 双击 WinKcp_Launcher 分别管理  Windows_KCP.cmd 和 Windows_UDP2RAW.cmd 启动关闭
 4. 电脑$$客户端设置  导入下面的模版配置，再修改成实际密码
 5. 电脑WG客户端设置  导入 wg_client.conf 修改 Endpoint = 127.0.0.1:端口 另存一个配置
 6. 手机可以使用 ss+kcp ; KCP插件参数 按脚本提示
@@ -37,7 +36,7 @@ ss://YWVzLTI1Ni1nY206d2cyOTk5QDEyNy4wLjAuMToyMDE4#test
 
 ### OpenWRT和KoolShar使用 加速udp2raw+kcptun脚本 https://git.io/sskcp.sh
 - KcpTun [软件下载](https://github.com/xtaci/kcptun/releases) client_linux 改名成 kcp-client 存放路径 /usr/bin
-- KoolShare LEDE X64 可以酷软装udp2raw和kcptun，再做个软链接
+- KoolShare LEDE X64 可以酷软装udp2raw和kcptun，做软链接，示例命令
 
     ln -s /koolshare/bin/kcpclient /usr/bin/kcp-client
 
@@ -63,14 +62,5 @@ https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md
 
 ```
 
-
-### 个人浙江电信重启电脑后，Npcap网络驱动有问题(brook方案)
-- 可以 重启网卡（Npcap Loopback Adapter）或 再装npcap-0.994.exe 解决
-```
-:: 重启网卡（Npcap Loopback Adapter）
-netsh interface set interface "Npcap Loopback Adapter" disabled
-@ping 127.0.0.1 -n 3 >nul
-netsh interface set interface "Npcap Loopback Adapter" enabled
-```
 ### 运行Brook客户端Kcp+Udp2RAW 本地批处理示例
 ![](https://raw.githubusercontent.com/hongwenjun/img/master/brook_kcp.png)

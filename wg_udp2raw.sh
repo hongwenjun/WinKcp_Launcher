@@ -3,7 +3,7 @@
 # 密码随机，脚本提供修改
 passwd=$(date | md5sum  | head -c 6)
 
-# 端口参数, 为了简单好用，请下载脚本自编辑修改
+# 默认端口参数, 为了简单好用，请下载脚本自编辑修改
 wg_port=$(wg | grep 'listening port:' | awk '{print $3}')
 raw_port=2999
 speed_port=8888
@@ -26,14 +26,27 @@ default_display()
 {
     echo -e "${GreenBG}   WireGuard + Speeder + Udp2Raw 和 Shadowsocks + Kcp + Udp2RAW 一键脚本   ${Font}"
     echo -e "${SkyBlue}             开源项目: https://github.com/hongwenjun/vps_setup             ${Font}"
-    echo -e "随机生成密码: ${RedBG} ${passwd} ${Font} 现在可修改; 端口参数为了简单好用，熟悉脚本自行修改"
 
+    echo -e "随机生成密码: ${RedBG} ${passwd} ${Font} 现在可修改; "
     read -p "请输入你要的密码(按回车不修改): " -t 30 new
 
     if [[ ! -z "${new}" ]]; then
         passwd="${new}"
-        echo -e "修改密码: ${GreenBG} ${passwd} ${Font}"
+        echo -e "${SkyBlue}:: 修改后新密码: ${GreenBG} ${passwd} ${Font}"
+        echo -e "${SkyBlue}:: WG+SPEED+UDP2RAW  默认伪装TCP端口: ${RedBG} ${raw_port} "
+        echo -e "${SkyBlue}:: SS+KCP+UDP2RAW    默认伪装TCP端口: ${RedBG} ${ss_raw_port} ${Font}"
+
+        read -p ":: 1.请输入WG+SPEED+UDP2RAW 伪装端口: "  raw_port
+            if [[ -z "${raw_port}" ]]; then
+                raw_port=2999
+            fi
+
+        read -p ":: 2.请输入 SS+KCP+UDP2RAW  伪装端口: "  ss_raw_port
+            if [[ -z "${ss_raw_port}" ]]; then
+                ss_raw_port=1999
+            fi
     fi
+
 }
 
 english_display()
@@ -47,7 +60,19 @@ english_display()
 
     if [[ ! -z "${new}" ]]; then
         passwd="${new}"
-        echo -e "New Password: ${GreenBG} ${passwd} ${Font}"
+        echo -e "${SkyBlue}:: Now, the New Password: ${GreenBG} ${passwd} ${Font}"
+        echo -e "${SkyBlue}:: WG+SPEED+UDP2RAW  Default Camouflage TCP Port: ${RedBG} ${raw_port} "
+        echo -e "${SkyBlue}:: SS+KCP+UDP2RAW    Default Camouflage TCP Port: ${RedBG} ${ss_raw_port} ${Font}"
+
+        read -p ":: 1.Please Modify WG+SPEED+UDP2RAW Camouflage TCP Port: "  raw_port
+            if [[ -z "${raw_port}" ]]; then
+                raw_port=2999
+            fi
+
+        read -p ":: 2.Please Modify SS+KCP+UDP2RAW  Camouflage TCP Port: "  ss_raw_port
+            if [[ -z "${ss_raw_port}" ]]; then
+                ss_raw_port=1999
+            fi
     fi
 }
 

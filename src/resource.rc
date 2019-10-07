@@ -36,7 +36,7 @@ IDB_BITMAP4        BITMAP         ".\\bk.bmp"
 LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 DLG_MAIN DIALOG 0, 0, 361, 168
 STYLE DS_3DLOOK | DS_CENTER | DS_MODALFRAME | DS_SHELLFONT | WS_CAPTION | WS_VISIBLE | WS_POPUP | WS_SYSMENU
-CAPTION "Windows KcpTun  Udp2Raw 启动管理器       By sRGB.vicp.net 蘭雅sRGB"
+CAPTION "Windows Udp2raw+Kcptun 启动管理器(加速TCP流量和伪装UDP)  by 蘭雅sRGB"
 FONT 8, "Ms Shell Dlg"
 {
     PUSHBUTTON      "开启Speeder + Udp2Raw加速TCP伪装", OPEN_UDP2RAW, 53, 8, 138, 40, BS_MULTILINE, WS_EX_LEFT
@@ -58,7 +58,7 @@ FONT 8, "Ms Shell Dlg"
     LTEXT           "IP:", IP_LT1, 202, 22, 10, 8, SS_LEFT, WS_EX_LEFT
     LTEXT           "备注", IP_LT2, 286, 21, 17, 8, SS_LEFT, WS_EX_LEFT
     AUTOCHECKBOX    "调试->显示窗口", DEBUG_FLG, 275, 8, 70, 8, 0, WS_EX_LEFT
-    LTEXT           "   信息: 点击信息栏，切换提示！更新(2019.3.31)", IDC_INFO_TEXT, 6, 143, 185, 21, SS_LEFT | SS_CENTERIMAGE, WS_EX_STATICEDGE
+    LTEXT           "   信息: 点击信息栏，切换提示！更新(1949-2019)", IDC_INFO_TEXT, 6, 143, 185, 21, SS_LEFT | SS_CENTERIMAGE, WS_EX_STATICEDGE
 }
 
 
