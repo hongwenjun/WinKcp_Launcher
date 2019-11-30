@@ -1,4 +1,6 @@
-- [蘭雅sRGB![](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/youtube.png)频道](https://www.youtube.com/channel/UCupRwki_4n87nrwP0GIBUXA/videos) &nbsp;&nbsp;&nbsp;可以观看相关脚本工具的演示视频!
+- 欢迎加入编程语言群 Telegram 电报群：https://t.me/codeblocks
+- [![](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/youtube.png)频道](https://www.youtube.com/sRGB18/videos) &nbsp;&nbsp;www.youtube.com/sRGB18 &nbsp;&nbsp;[![](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/paypal.png)赞赏支持!](https://paypal.me/sRGB18)&nbsp;&nbsp;https://paypal.me/sRGB18
+---
 ### Windows KcpTun Udp2Raw 启动管理器  [下载](https://github.com/hongwenjun/WinKcp_Launcher/archive/master.zip)
 ![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/gui.gif)
 
