@@ -37,7 +37,7 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
     case WM_COMMAND: {
 
-            int  wmId    = LOWORD(wParam);
+        //  int  wmId    = LOWORD(wParam);
             int  wmEvent = HIWORD(wParam);
 
             switch (LOWORD(wParam)) {
@@ -243,7 +243,7 @@ void App_Initdialog(HWND & hwnd)
     ::SendMessage(hwnd, WM_SETICON, ICON_SMALL, (LPARAM)g_hIcon);
 
     // 设置图片
-    ::SendDlgItemMessage(hwnd, DONATE_PIC, STM_SETIMAGE, IMAGE_BITMAP, (long)g_hBitmap_DONATE);
+    ::SendDlgItemMessage(hwnd, DONATE_PIC, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)g_hBitmap_DONATE);
 
 
     // ipbox : ip管理窗口隐藏

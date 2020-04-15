@@ -54,7 +54,7 @@ void ipbox_add(HWND &hwndDlg)
             ::SetWindowText(hwnd_edit_info, "");
         }
 
-        ::SendDlgItemMessage(hwndDlg, IP_LIST, LB_ADDSTRING, NULL, (long)ipbuf);
+        ::SendDlgItemMessage(hwndDlg, IP_LIST, LB_ADDSTRING, NULL, (LPARAM)ipbuf);
 
     }
 }
@@ -78,11 +78,11 @@ void ipbox_save(HWND &hwndDlg)
     FILE*  pFile = fopen(ipbox_file, "w");
 
     // 获取 IP列表 IP总数
-    int size = ::SendDlgItemMessage(hwndDlg, IP_LIST, LB_GETCOUNT, 0, 0);
+    size_t size = ::SendDlgItemMessage(hwndDlg, IP_LIST, LB_GETCOUNT, 0, 0);
 
     // IP列表 写文件
     for (size_t index = 0; index != size ; index++) {
-        ::SendDlgItemMessage(hwndDlg, IP_LIST, LB_GETTEXT, index, (long)buf);
+        ::SendDlgItemMessage(hwndDlg, IP_LIST, LB_GETTEXT, index, (LPARAM)buf);
         fprintf(pFile, "%s\n", buf);
     }
 
@@ -102,7 +102,7 @@ void ipbox_load(HWND &hwndDlg)
                 *pch = '\0';
 
             if (strlen(buf) > 0)
-                ::SendDlgItemMessage(hwndDlg, IP_LIST, LB_ADDSTRING, NULL, (long)buf);
+                ::SendDlgItemMessage(hwndDlg, IP_LIST, LB_ADDSTRING, NULL, (LPARAM)buf);
         }
     }
     fclose(pFile);
@@ -114,7 +114,7 @@ void read_appname(HWND &hwndDlg)
     char buf[512] = {0};
     char* pch;
     char* ps;
-    char* value = "@TITLE";
+    const char* value = "@TITLE";
 
     FILE*  pFile = fopen("START_APP.cmd", "r");
     if (pFile != NULL) {
@@ -141,7 +141,7 @@ void ipbox_list_signal(HWND &hwndDlg, int wmEvent)
     char* pch = NULL;
 
     int index = ::SendDlgItemMessage(hwndDlg, IP_LIST, LB_GETCURSEL, 0, 0);
-    ::SendDlgItemMessage(hwndDlg, IP_LIST, LB_GETTEXT, index, (long)buf);
+    ::SendDlgItemMessage(hwndDlg, IP_LIST, LB_GETTEXT, index, (LPARAM)buf);
 
     // IP列表选择
     if (wmEvent == LBN_SELCHANGE) {
@@ -234,7 +234,7 @@ bool set_server_ip(const char* filename,  const char* newip)
 #define LINE_SIZE 1024
     char line[LINE_SIZE];
     char* ps;
-    char* Value = "@set SERVER_IP=";
+    const char* Value = "@set SERVER_IP=";
 
     while (fgets(line, LINE_SIZE, input)) {   // 读取每一行
         if (ps = strstr(line, Value)) {

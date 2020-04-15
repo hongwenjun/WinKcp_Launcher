@@ -1,7 +1,7 @@
 - 欢迎加入编程语言群 Telegram 电报群：https://t.me/codeblocks
 - [![](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/youtube.png)频道](https://www.youtube.com/sRGB18/videos) &nbsp;&nbsp;www.youtube.com/sRGB18 &nbsp;&nbsp;[![](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/paypal.png)赞赏支持!](https://paypal.me/sRGB18)&nbsp;&nbsp;https://paypal.me/sRGB18
 ---
-### Windows KcpTun Udp2Raw 启动管理器  [下载](https://github.com/hongwenjun/WinKcp_Launcher/archive/master.zip)
+### Windows KcpTun Udp2Raw 启动管理器  [下载](https://github.com/hongwenjun/WinKcp_Launcher/archive/master.zip)  [使用视频演示](https://youtu.be/uwpQ6DLB_OU)
 ![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/gui.gif)
 
 ### 严重声明和友情提示：

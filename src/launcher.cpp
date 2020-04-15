@@ -50,7 +50,7 @@ void mouse_click_signal(HWND &hwndDlg,  LPARAM lParam)
     static int id = 0;
     if (id >= 12)
         id = 0;
-    char* tips[] = {"   信息: 感谢之前打赏和使用本软件的朋友!",
+    const char* tips[] = {"   信息: 感谢之前打赏和使用本软件的朋友!",
                     "   信息: 点击左边图标，能自动开启对应程序!",
                     "   信息: 编辑START_APP.cmd设置三个图标对应程序",
                     "   信息: IP 管理功能，添加和删除后，请点保存!",
