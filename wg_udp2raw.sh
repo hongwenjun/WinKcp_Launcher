@@ -101,8 +101,8 @@ udp2raw_install()
     wget https://github.com/xtaci/kcptun/releases/download/${kcp_ver}/$kcptun_tar_gz
     tar xf $kcptun_tar_gz
     mv server_linux_amd64 /usr/bin/kcp-server
+    mv client_linux_amd64 /usr/bin/kcp-client
     rm $kcptun_tar_gz
-    rm client_linux_amd64
 
     # 下载 UDPspeeder
     udpspeeder_ver=$(wget --no-check-certificate -qO- https://api.github.com/repos/wangyu-/UDPspeeder/releases/latest | grep 'tag_name' | cut -d\" -f4)
