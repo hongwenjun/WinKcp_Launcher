@@ -2,6 +2,7 @@
 
 
 // 鼠标点击坐标，对应三个图标的程序,二维码坐标，信息栏坐标
+
 void mouse_click_signal(HWND &hwndDlg,  LPARAM lParam)
 {
     // 注册图标焦点POS
@@ -51,18 +52,18 @@ void mouse_click_signal(HWND &hwndDlg,  LPARAM lParam)
     if (id >= 12)
         id = 0;
     const char* tips[] = {"   信息: 感谢之前打赏和使用本软件的朋友!",
-                    "   信息: 点击左边图标，能自动开启对应程序!",
-                    "   信息: 编辑START_APP.cmd设置三个图标对应程序",
-                    "   信息: IP 管理功能，添加和删除后，请点保存!",
-                    "   信息: 中间箭头IP管理，调试:勾选->显示窗口!",
-                    " 1. 需要先安装 pcap 网络驱动包 npcap-0.9983.exe",
-                    " 2. 修改 Windows_KCP.cmd 脚本服务器IP参数",
-                    " 3. 使用软件管理 Windows_KCP.cmd 启动关闭",
-                    " 4. 电脑WG客户端设置 修改成 Endpoint = 127.0.0.1",
-                    " 5. 手机可以使用 ss+kcp ; KCP插件参数 按脚本提示",
-                    "   信息: 点击右边图片，快速访问Youtube频道!",
-                    "   信息: 好吧! 点击绿色区域就能关闭程序了!",
-                   };
+                          "   信息: 点击左边图标，能自动开启对应程序!",
+                          "   信息: 编辑START_APP.cmd设置三个图标对应程序",
+                          "   信息: IP 管理功能，添加和删除后，请点保存!",
+                          "   信息: 中间箭头IP管理，调试:勾选->显示窗口!",
+                          " 1. 需要先安装 pcap 网络驱动包 npcap-0.9983.exe",
+                          " 2. 修改 Windows_KCP.cmd 脚本服务器IP参数",
+                          " 3. 使用软件管理 Windows_KCP.cmd 启动关闭",
+                          " 4. 电脑WG客户端设置 修改成 Endpoint = 127.0.0.1",
+                          " 5. 手机可以使用 ss+kcp ; KCP插件参数 按脚本提示",
+                          "   信息: 点击右边图片，快速访问Youtube频道!",
+                          "   信息: 好吧! 点击绿色区域就能关闭程序了!",
+                         };
     if (abs((int)mouse_pos.x - TIPS_POS.x) < 150) {
         if (abs((int)mouse_pos.y - TIPS_POS.y) < 30) {
             strcpy(buf, tips[id++]);
@@ -88,8 +89,8 @@ void read_app_cmd(char* app_cmd, const char* value)
     FILE*  pFile = fopen("START_APP.cmd", "r");
     if (pFile != NULL) {
         while (fgets(buf, 512, pFile) != NULL) {
-            if (ps = strstr(buf, value)) {
-                if (ps = strstr(buf, "\"")) {
+            if ((ps = strstr(buf, value)) != NULL)  {
+                if ((ps = strstr(buf, "\"")) != NULL)  {
                     pch = strtok(ps, "\"\t\n");
                     strcpy(app_cmd, pch);
 

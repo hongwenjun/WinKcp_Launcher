@@ -1,3 +1,6 @@
+### 下载模版文件，如图修改红框范围内 IP端口和密码
+![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/template/wg_ss.png)
+
 # WireGuard + Speeder + Udp2Raw 和 Shadowsocks + Kcp + Udp2RAW 一键脚本
 ### 请访问 https://git.io/winkcp 下载客户端程序和模版
 

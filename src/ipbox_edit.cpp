@@ -95,6 +95,7 @@ void ipbox_load(HWND &hwndDlg)
     char buf[512] = {0};
     char* pch;
     FILE*  pFile = fopen(ipbox_file, "r");
+
     if (pFile != NULL) {
         while (fgets(buf, 512, pFile) != NULL) {
             pch = strrchr(buf, '\n');
@@ -104,8 +105,8 @@ void ipbox_load(HWND &hwndDlg)
             if (strlen(buf) > 0)
                 ::SendDlgItemMessage(hwndDlg, IP_LIST, LB_ADDSTRING, NULL, (LPARAM)buf);
         }
+        fclose(pFile);
     }
-    fclose(pFile);
 }
 
 // 读取 START_APP.cmd 中的标题
@@ -116,10 +117,10 @@ void read_appname(HWND &hwndDlg)
     char* ps;
     const char* value = "@TITLE";
 
-    FILE*  pFile = fopen("START_APP.cmd", "r");
+    FILE* pFile = fopen("START_APP.cmd", "r");
     if (pFile != NULL) {
         while (fgets(buf, 512, pFile) != NULL) {
-            if (ps = strstr(buf, value)) {
+            if ((ps = strstr(buf, value)) != NULL) {
                 pch = strtok(buf, " \t");
                 if (pch != NULL) {
                     pch = strtok(NULL, " \t");
@@ -229,32 +230,28 @@ bool set_server_ip(const char* filename,  const char* newip)
     if (input == NULL) {
         return false;
     }
-    FILE* output = tmpfile();
 
 #define LINE_SIZE 1024
     char line[LINE_SIZE];
+    char* buf = (char*)malloc(256 * LINE_SIZE);
+    memset(buf, 0, 256 * LINE_SIZE);
+
     char* ps;
     const char* Value = "@set SERVER_IP=";
 
     while (fgets(line, LINE_SIZE, input)) {   // 读取每一行
-        if (ps = strstr(line, Value)) {
-            fprintf(output, "%s%s\n", Value, newip);
-        } else {
-            fputs(line, output);
+        if ((ps = strstr(line, Value)) != NULL) {
+            sprintf(line, "%s%s\n", Value, newip);
         }
+        strcat(buf, line);
     }
 
     fclose(input);
-    rewind(output);
 
-    input = fopen(filename, "w");
-    // 回写文件
-    while (fgets(line, LINE_SIZE, output)) {
+    FILE* output = fopen(filename, "w");
+    fprintf(output, "%s", buf);
 
-        fputs(line, input);
-
-    }
+    free(buf);
     fclose(output);
-    fclose(input);
     return true;
 }

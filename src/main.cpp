@@ -14,6 +14,8 @@ int  hide_run_cmd(char* cmdline);
 void App_Initdialog(HWND & hwnd);
 void feedback_info(HWND & hwndDlg, int BTN_ID);
 
+void mouse_click_signal(HWND &hwndDlg, LPARAM lParam);
+
 HBITMAP g_hBitmap_DONATE; // 打赏图片的句柄
 HICON   g_hIcon;          // 对话框图标句柄
 bool debug_flg = false;   // 调试:勾选->显示窗口
@@ -37,7 +39,7 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
     case WM_COMMAND: {
 
-        //  int  wmId    = LOWORD(wParam);
+            //  int  wmId    = LOWORD(wParam);
             int  wmEvent = HIWORD(wParam);
 
             switch (LOWORD(wParam)) {
@@ -113,8 +115,8 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
         }
         return TRUE;
 
+    // 鼠标单击信号传替
     case WM_LBUTTONDOWN: {
-            // 鼠标单击信号传替
             mouse_click_signal(hwndDlg, lParam);
             break;
         }
