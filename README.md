@@ -12,10 +12,10 @@
 ![](https://raw.githubusercontent.com/hongwenjun/img/master/ss_wg.png)
 
 ### VirSCAN.org 一个非盈利性的免费病毒检测网站，49款杀毒引擎检测安全
-  http://r.virscan.org/language/zh-cn/report/9212f801e9cfef20e4ad1bc07aea562e
+  https://r.virscan.org/language/zh-cn/report/c2f68e8bc003e6de4a0b6c5800b05a08
 
 ### 使用说明:
-1. 需要先安装 pcap 网络驱动包, 安装 [npcap-0.9983.exe](https://nmap.org/npcap/)
+1. 需要先安装 pcap 网络驱动包, 安装 [npcap-0.9996.exe](https://nmap.org/npcap/)
 2. 修改 [Windows_KCP.cmd 和 Windows_UDP2RAW.cmd 服务器IP参数](https://github.com/hongwenjun/WinKcp_Launcher/tree/master/template)，双击启动调试
 3. 双击 WinKcp_Launcher 分别管理  Windows_KCP.cmd 和 Windows_UDP2RAW.cmd 启动关闭
 4. 电脑$$客户端设置  导入下面的模版配置，再修改成实际密码
@@ -25,7 +25,7 @@
 ### Shadowsocks + Kcp + Udp2RAW  配置模版，导入后改实际密码
 
 ```
-ss://YWVzLTI1Ni1nY206d2cyOTk5QDEyNy4wLjAuMToyMDE4#test
+ss://YWVzLTI1Ni1nY206d2cyOTk5QDEyNy4wLjAuMToyMDE4#SS_KCP_UDP2RAW
 ```
 
 ### 手机SS+KCP加速方案
@@ -59,10 +59,12 @@ https://github.com/wangyu-/udp2raw-tunnel/blob/master/doc/kcptun_step_by_step.md
 ::设置三个图标对应程序，点击图标能自动开启; 路径如果有空格需要"双引号"括起来
 
 ::WG_APP =  "C:\Program Files\TunSafe\TunSafe.exe"
-::SS_APP =  "C:\Program File\Shadowsocks\Shadowsocks.exe"
+::SS_APP =  .\Shadowsocks.exe
 ::MY_APP =  D:\Git\git-bash.exe
 
 ```
+- 下载 [Shadowsocks](https://github.com/shadowsocks/shadowsocks-windows) 放到程序目录下，可以点小飞机图标调用
+
 
 ### 运行Brook客户端Kcp+Udp2RAW 本地批处理示例
 ![](https://raw.githubusercontent.com/hongwenjun/img/master/brook_kcp.png)

@@ -2,15 +2,15 @@
 
 ::设置三个图标对应程序，点击图标能自动开启; 路径如果有空格需要"双引号"括起来
 
-::WG_APP =  C:\soft\TunSafe\TunSafe.exe
-::SS_APP =  C:\soft\Shadowsocks\Shadowsocks.exe
-::MY_APP =  "D:\Git\git-bash.exe"
+::WG_APP =  "C:\Program Files\TunSafe\TunSafe.exe"
+::SS_APP =  .\Shadowsocks.exe
+::MY_APP =  D:\Git\git-bash.exe
 
 @echo.
 @set PATH=%~dp0;%~dp0/bin;%PATH%
 ::  两个冒号是注释，删除命令行首开启命令
 
-::  BROOK + KcpTun + Udp2Raw 客户端接口配置
+::  BROOK + KcpTun + Udp2Raw 客户端接口配置 示例如下
 @set SERVER_IP=1.2.3.4
 @set PORT=2999
 @set PASSWORD=wg2999
