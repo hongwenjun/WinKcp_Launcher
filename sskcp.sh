@@ -72,7 +72,7 @@ setconf()
         sed -i "s/^SS_PORT=.*/SS_PORT=${ss_port}/g"  "sskcp.sh"
     fi
 
-    echo -e "${Yellow}" && head -n 6 sskcp.sh | tail -n 4 &&  echo -e "${Font}"
+    echo -e "${Yellow}" && head -n 7 sskcp.sh | tail -n 5 &&  echo -e "${Font}"
 }
 
 system_def(){
