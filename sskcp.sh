@@ -4,6 +4,7 @@ SERVER_IP=188.188.188.188
 PORT=1999
 PASSWORD=wg2999
 SS_PORT=40000
+SOCKS5_PORT=1080
 
 start(){
   # SS + KcpTun + Udp2RAW
@@ -11,7 +12,7 @@ start(){
     kcp-client -r 127.0.0.1:4000 -l :$SS_PORT --key $PASSWORD -mode fast2 -mtu 1300  >> /var/log/kcp-client.log  2>&1 &
 
   # ss-local -s 服务器IP地址  -p 服务器端口  -b 绑定本地IP  -l 本地端口  -k 密码  -m 加密方式 [-c 配置文件]
-    ss-local -s 127.0.0.1 -p $SS_PORT -b 0.0.0.0 -l 1080 -k $PASSWORD -m aes-256-gcm  -t 300 >> /var/log/ss-local.log &
+    ss-local -s 127.0.0.1 -p $SS_PORT -b 0.0.0.0 -l $SOCKS5_PORT -k $PASSWORD -m aes-256-gcm  -t 300 >> /var/log/ss-local.log &
 
     status
 }
