@@ -90,7 +90,7 @@ After=network.target
 [Service]
 Type=forking
 User=root
-ExecStart=nohup sh /root/sskcp.sh start &
+ExecStart=nohup /root/sskcp.sh start &
 ExecReload=sh /root/sskcp.sh stop
 
 [Install]
