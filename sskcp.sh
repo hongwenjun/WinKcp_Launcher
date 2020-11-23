@@ -14,7 +14,7 @@ start(){
   # ss-local -s 服务器IP地址  -p 服务器端口  -b 绑定本地IP  -l 本地端口  -k 密码  -m 加密方式 [-c 配置文件]
     ss-local -s 127.0.0.1 -p $SS_PORT -b 0.0.0.0 -l $SOCKS5_PORT -k $PASSWORD -m aes-256-gcm  -t 300 >> /var/log/ss-local.log &
 
-    status
+  # status
 }
 
 stop(){
@@ -30,7 +30,7 @@ restart(){
 
 help(){
     echo -e "${SkyBlue}:: Source: ${Green}https://git.io/sskcp.sh  ${Font}By 蘭雅sRGB"
-    echo -e "${SkyBlue}:: Usage: ${GreenBG} bash sskcp.sh ${Yellow} [start|stop|restart|set] ${Font}"
+    echo -e "${SkyBlue}:: Usage: ${GreenBG} bash sskcp.sh ${Yellow} [start|stop|restart|service|set] ${Font}"
     echo
 }
 
@@ -80,6 +80,29 @@ system_def(){
 	Font="\033[0m"  && Yellow="\033[0;33m" && SkyBlue="\033[0;36m"
 }
 
+systemd_service(){
+    # 安装启动服务
+    cat <<EOF >/usr/lib/systemd/system/sskcp.service
+[Unit]
+Description=sskcp.sh Service
+After=network.target
+
+[Service]
+Type=forking
+User=root
+ExecStart=nohup sh /root/sskcp.sh start &
+ExecReload=sh /root/sskcp.sh stop
+
+[Install]
+WantedBy=multi-user.target
+
+EOF
+	chmod +x  /root/sskcp.sh
+	systemctl enable sskcp.service
+	systemctl start sskcp.service
+	systemctl status sskcp.service
+}
+
 # 脚本命令参数
 system_def
 if [[ $# > 0 ]]; then
@@ -93,6 +116,9 @@ if [[ $# > 0 ]]; then
         ;;
         restart)
           restart
+        ;;
+	service)
+          systemd_service
         ;;
         set)
           setconf
