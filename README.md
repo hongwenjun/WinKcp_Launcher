@@ -1,6 +1,6 @@
 - 欢迎加入编程语言群 Telegram 电报群：https://t.me/codeblocks
 - [![](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/youtube.png)频道](https://www.youtube.com/sRGB18/videos) &nbsp;&nbsp;www.youtube.com/sRGB18 &nbsp;&nbsp;[![](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/paypal.png)赞赏支持!](https://paypal.me/sRGB18)&nbsp;&nbsp;https://paypal.me/sRGB18
-- 推荐新手两个性价比:100:很按时计费VPS: :+1: [vultr.com](https://www.vultr.com/?ref=7425413) :+1: [skysilk.com](https://www.skysilk.com/ref/Xmr9xL1Bnf) 　:+1:按需开启，不用不浪费！
+- 推荐新手两个性价比:100:好按时计费VPS: :+1: [vultr.com](https://www.vultr.com/?ref=7425413) :+1: [skysilk.com](https://www.skysilk.com/ref/Xmr9xL1Bnf) 　:+1:按需开启，不用不浪费！
 ---
 ### Windows KcpTun Udp2Raw 启动管理器  [下载](https://github.com/hongwenjun/WinKcp_Launcher/archive/master.zip)  [使用视频演示](https://youtu.be/uwpQ6DLB_OU)
 ![](https://raw.githubusercontent.com/hongwenjun/WinKcp_Launcher/master/gui.gif)
@@ -35,6 +35,20 @@ ss://YWVzLTI1Ni1nY206d2cyOTk5QDEyNy4wLjAuMToyMDE4#SS_KCP_UDP2RAW
   https://github.com/shadowsocks/kcptun-android/releases
 
   KCPTUN端口: 4000 ; KCP插件设置参数 mode=fast2;key=wg2999;mtu=1300
+```
+
+### Linux (Debian Centos Ubuntu Arch Alpine) 客户端使用 https://git.io/sskcp.sh
+```
+# 国内类Linux系统添加Http代理下载文件，适合 wget curl git apt 等
+export http_proxy="http://192.168.1.135:8010"
+export https_proxy="http://192.168.1.135:8010"
+
+# 借用服务端脚本安装必要程序，自行删除 /etc/rc.local
+wget git.io/wgmtu  &&  bash wgmtu setup
+
+# 设置参数
+wget git.io/sskcp.sh  && bash sskcp set
+
 ```
 
 ### OpenWRT和KoolShar使用 加速udp2raw+kcptun脚本 https://git.io/sskcp.sh
