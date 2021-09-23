@@ -115,6 +115,8 @@ udp2raw_install()
 
 # 首次运行脚本需要安装
 if [ ! -e '/usr/bin/speederv2' ]; then
+    apt install iptables -y   # Debian 11默认没装 iptables
+    update-alternatives --set iptables /usr/sbin/iptables-legacy
     udp2raw_install
 fi
 
