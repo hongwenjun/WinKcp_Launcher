@@ -132,8 +132,8 @@ kcp-server -t "127.0.0.1:40000" -l ":${kcp_port}" --key ${passwd} -mode fast2 -m
 udp2raw -s -l0.0.0.0:${ss_raw_port} -r 127.0.0.1:${kcp_port} -k ${passwd} --raw-mode faketcp -a >> /var/log/udp2raw.log &
 
 # WG + Speeder + Udp2RAW  or (V2ray udp)
-speederv2 -s -l127.0.0.1:${speed_port}  -r127.0.0.1:${wg_port}  -f20:10 -k ${passwd} --mode 0  >> /var/log/speederv2.log &
-udp2raw   -s -l0.0.0.0:${raw_port}  -r 127.0.0.1:${speed_port}  -k ${passwd} --raw-mode faketcp -a >> /var/log/wg_udp2raw.log &
+# speederv2 -s -l127.0.0.1:${speed_port}  -r127.0.0.1:${wg_port}  -f20:10 -k ${passwd} --mode 0  >> /var/log/speederv2.log &
+# udp2raw   -s -l0.0.0.0:${raw_port}  -r 127.0.0.1:${speed_port}  -k ${passwd} --raw-mode faketcp -a >> /var/log/wg_udp2raw.log &
 
 exit 0
 
