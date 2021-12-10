@@ -128,7 +128,7 @@ cat <<EOF >/etc/rc.local
 
 # SS + KcpTun + Udp2RAW  or (SSR BROOK)            # IPv6 支持参数 -s ::0
 ss-server  -s 0.0.0.0 -p 40000 -k ${passwd} -m aes-256-gcm -t 300  -s ::0  >> /var/log/ss-server.log &
-kcp-server -t "127.0.0.1:40000" -l ":${kcp_port}" --key ${passwd} -mode fast2 -mtu 1300  >> /var/log/kcp-server.log &
+kcp-server -t "127.0.0.1:40000" -l ":${kcp_port}" --key ${passwd} -mode fast2 -mtu 1300  2>> /var/log/kcp-server.log &
 udp2raw -s -l0.0.0.0:${ss_raw_port} -r 127.0.0.1:${kcp_port} -k ${passwd} --raw-mode faketcp -a >> /var/log/udp2raw.log &
 
 # WG + Speeder + Udp2RAW  or (V2ray udp)
