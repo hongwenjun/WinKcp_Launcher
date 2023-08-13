@@ -9,14 +9,14 @@ udp2raw_install()
     mv server_linux_amd64 /usr/bin/kcp-server
     mv client_linux_amd64 /usr/bin/kcp-client
 
-	wget https://262235.xyz/u//speederv2_binaries.tar.gz
+    wget https://262235.xyz/u//speederv2_binaries.tar.gz
     tar xf speederv2_binaries.tar.gz
     mv speederv2_amd64 /usr/bin/speederv2
 }
 
 def_install(){
     # Download the binary release of Pure Compilation.
-    wget -O /tmp/ss.tgz https://git.io/ss.tgz
+    wget -O /tmp/ss.tgz  https://262235.xyz/u/ss.tgz
     tar xvf  /tmp/ss.tgz -C /
 
     echo "/usr/local/lib" > /etc/ld.so.conf.d/ss-libev.conf
@@ -25,5 +25,12 @@ def_install(){
 }
 
 cd /tmp/
-def_install
-udp2raw_install
+
+if [ ! -e '/usr/bin/speederv2' ]; then
+    apt update -y && apt install iptables -y
+    update-alternatives --set iptables /usr/sbin/iptables-legacy
+    def_install
+    udp2raw_install
+fi
+
+wget -O /root/sskcp.py   https://262235.xyz/u/sskcp.py
